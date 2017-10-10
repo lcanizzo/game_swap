@@ -4,7 +4,7 @@ var express = require("express")
 var router = express.Router();
 
 // Import the model to use its database functions.
-var game = require("../models/model.js");
+var game = require("../models/user.js");
 // Create all our routes and set up logic within those routes where required.
 //Login Page
 router.get("/", function(request, response){
