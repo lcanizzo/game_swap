@@ -4,7 +4,7 @@ var express = require("express")
 var router = express.Router();
 
 // Import the model to use its database functions.
-var game = require("../models/user.js");
+var user = require("../models/user.js");
 var game = require("../models/game.js");
 // Create all our routes and set up logic within those routes where required.
 //Login Page
@@ -21,7 +21,13 @@ router.get("/search", function(request, response){
 });
 
 router.post("/search", function(request, response){
-  
+    // user.all(function(data) {
+    //     var hbsObject = {
+    //         users: data
+    //     };
+    //     console.log(hbsObject);
+    //     response.render("index", hbsObject);
+    //   });
 })
 
 //Profile Page
