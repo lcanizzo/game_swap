@@ -3,6 +3,8 @@ var express = require("express")
 // Establish router via express
 var router = express.Router();
 
+var connection = require("../config/connection.js")
+
 // Import the model to use its database functions.
 var game = require("../models/user.js");
 // Create all our routes and set up logic within those routes where required.
@@ -17,6 +19,10 @@ router.get("/search", function(request, response){
     //render to search handlebar
     response.render("index")
     console.log("Working Search")
+});
+
+router.post("/search", function(request, response){
+  
 })
 
 //Profile Page
