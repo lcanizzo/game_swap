@@ -28,7 +28,7 @@ var orm ={
     * @param {array} vals - Array of values corresponding to the collumns
     * @param {function} cb - Callback Function
     */
-    create: function (trable, cols, vals, cb) {
+    create: function (table, cols, vals, cb) {
         var columns = cols.toString();
         var values = printQuestionMarks(vals.length);
         var queryString = "INSERT INTO " + table + "(" + columns + ")" 
@@ -43,3 +43,4 @@ var orm ={
 
 
 // Export the orm object for the model.
+module.exports = orm;
