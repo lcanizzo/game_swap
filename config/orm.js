@@ -22,6 +22,9 @@ var orm ={
             cb(result);
         });
     },
+    allBy: function (table, cond, cb) {
+        
+    },
     /** Add a new entry in a trable
     * @param {string} table - Target table of the new entry.
     * @param {array} cols - Array of collumns being added.
