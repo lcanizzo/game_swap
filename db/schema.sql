@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `gameswap_db`.`locations` (
   `city` VARCHAR(45) NOT NULL,
   `state` VARCHAR(45) NOT NULL,
   `zip` INT NOT NULL,
-  `locations_meta_id` INT NOT NULL,
+  `locations_meta_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_locations_locations_meta1_idx` (`locations_meta_id` ASC),
   CONSTRAINT `fk_locations_locations_meta1`
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `gameswap_db`.`users` (
   `name` VARCHAR(45) NOT NULL,
   `email` VARCHAR(55) NOT NULL,
   `is_verified` BOOLEAN NULL,
-  `users_meta_id` INT NOT NULL,
+  `users_meta_id` INT NULL,
   `locations_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_users_users_meta_idx` (`users_meta_id` ASC),
