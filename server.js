@@ -1,21 +1,29 @@
-// Import express package
-var express = require('express')
-// Import bodyParse package
-var bodyParser = require('body-parser')
-var exphbrs = require('express-handlebars')
+// Dependencies
+// =========================================
+const express = require('express');
+const bodyParser = require('body-parser');
+const exphbrs = require('express-handlebars');
 
+
+// Setup App
+// =========================================
 var app = express();
+var PORT = process.env.PORT || 3000;
 
-// Establish port
-var PORT = process.env.PORT || 8000;
-// Serve static content for the app from the "public" directory in the application directory.
+// Use Middleware
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: false }));
 
-// Set Handlebars.
 app.engine("handlebars", exphbrs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+// Routing 
 // Import routes from Controllers and give the server access to them.
+// =================================================
 
 
+// Listen
+// ======================================
 app.listen(PORT, function(){
     console.log("Listening on Port: " + PORT)
-})
+});
