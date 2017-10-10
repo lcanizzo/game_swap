@@ -22,8 +22,18 @@ var orm ={
             cb(result);
         });
     },
-    allBy: function (table, cond, cb) {
-        
+    /** Search based on a single condition
+    * @param {string} table - Target table of the new entry.
+    * @param {string} cond - Column Name of condition where results are looked for.
+    * @param {any} val - Value of the condition being searched for
+    * @param {function} cb - Callback Function
+    */
+    allBy: function (table, cond, val, cb) {
+        var condition = cond;
+        var queryString = "SELECT * FROM " + table + " WHERE " + condition + " = ? ;";
+        connection.query(queryString, val, function (result) {
+            cb(result);
+        });
     },
     /** Add a new entry in a trable
     * @param {string} table - Target table of the new entry.
