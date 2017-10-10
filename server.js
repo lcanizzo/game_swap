@@ -14,7 +14,9 @@ var PORT = process.env.PORT || 8000;
 app.engine("handlebars", exphbrs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 // Import routes from Controllers and give the server access to them.
+var routes = require("./controllers/exampleController.js")
 
+app.use("/", routes)
 
 app.listen(PORT, function(){
     console.log("Listening on Port: " + PORT)
