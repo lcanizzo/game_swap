@@ -16,18 +16,22 @@ router.get("/", function(request, response){
 //Home/Search Page
 router.get("/search", function(request, response){
     //render to search handlebar
-    response.render("index")
-    console.log("Working Search")
+    response.render("index");
+    console.log("Working Search");
 });
 
 router.post("/search", function(request, response){
-    // user.all(function(data) {
-    //     var hbsObject = {
-    //         users: data
-    //     };
-    //     console.log(hbsObject);
-    //     response.render("index", hbsObject);
-    //   });
+    var locationID = 3; // TO DO: Make variable dynamic based on request
+    console.log("Location ID: ", locationID);
+
+    user.allBy("locations_id", locationID ,function(data) {
+        console.log("Post Result:" , data);
+        var hbsObject = {
+            users: data
+        };
+        console.log(hbsObject);
+        response.render("search", hbsObject);
+      });
 })
 
 //Profile Page
@@ -45,4 +49,4 @@ router.get("/add/:username/:id", function(request, response){
 })
 
 // Export routes for server.js to use.
-module.exports = router
+module.exports = router;

@@ -31,7 +31,11 @@ var orm ={
     allBy: function (table, cond, val, cb) {
         var condition = cond;
         var queryString = "SELECT * FROM " + table + " WHERE " + condition + " = ? ;";
-        connection.query(queryString, val, function (result) {
+
+        console.log("ORM Searching for: " + queryString);
+
+        connection.query(queryString, val, function (err, result) {
+            console.log("ORM Result", result);
             cb(result);
         });
     },
