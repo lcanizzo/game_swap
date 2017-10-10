@@ -5,5 +5,12 @@ var game = {
         orm.all("games", function(res){
             cb(res);
         });
+    },
+    allBy: function(cond, val, cb){
+        orm.allBy("games", cond, val, function(res){
+            cb(res);
+        })
     }
 }
+
+module.exports = game;
