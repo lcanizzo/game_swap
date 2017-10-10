@@ -13,17 +13,23 @@ router.get("/", function(request, response){
 })
 
 //Home/Search Page
-router.post("/search", function(request, response){
+router.get("/search", function(request, response){
+    //render to search handlebar
+    response.render("index")
     console.log("Working Search")
 })
 
 //Profile Page
-router.post("/username/:id", function(request, response){
+router.get("/username/:id", function(request, response){
+    //render to profile handlebar
+    response.render("index")
     console.log("Working Profile")
 })
 
 //Add Game Page
-router.post("/add/:username/:id", function(request, response){
+router.get("/add/:username/:id", function(request, response){
+    //render to add game handlebar
+    response.render("index")
     console.log("Working Add Game")
 })
 
