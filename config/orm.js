@@ -18,7 +18,7 @@ function printQuestionMarks(num) {
 var orm ={
     all: function (table, cb) {
         var queryString = "SELECT * FROM " + table + ";";
-        connection.query(queryString, function (result) {
+        connection.query(queryString, function (err, result) {
             cb(result);
         });
     },
@@ -51,9 +51,9 @@ var orm ={
         var queryString = "INSERT INTO " + table + "(" + columns + ")" 
             + " VALUES ( " + values + " ) ;";
         
-        connection.query(queryString, vals, function (results) {
+        connection.query(queryString, vals, function (err, results) {
             cb(results);
-        })
+        });
     }
 }
 // Object for all our SQL statement functions. 
