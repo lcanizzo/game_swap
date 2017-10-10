@@ -9,16 +9,23 @@ var game = require("../models/exampleModel.js");
 //Login Page
 router.get("/", function(request, response){
     response.render("index")
-    console.log("Working")
+    console.log("Working Login")
 })
 
 //Home/Search Page
+router.post("/search", function(request, response){
+    console.log("Working Search")
+})
 
 //Profile Page
+router.post("/username/:id", function(request, response){
+    console.log("Working Profile")
+})
 
 //Add Game Page
+router.post("/add/:username/:id", function(request, response){
+    console.log("Working Add Game")
+})
 
 // Export routes for server.js to use.
-
-
 module.exports = router
