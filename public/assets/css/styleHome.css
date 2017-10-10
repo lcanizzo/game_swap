@@ -2,8 +2,12 @@ body{
     background-color: steelblue;
 }
 
+nav{
+    box-shadow: 0px 3px 10px 0px #0c5460;
+}
+
 .login{
-    width: 400px;
+    width: 500px;
     background-color: #e8e8e8;
     box-shadow: 0px 3px 10px 0px #0c5460;
     padding: 20px;
@@ -11,4 +15,8 @@ body{
 
 .login-header{
     background-color: darkslategrey;
+}
+
+.user-header{
+    color: white;
 }

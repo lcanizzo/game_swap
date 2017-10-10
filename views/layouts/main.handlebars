@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    {{!-- CSS Links --}}
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {{!-- CSS Links --}}
     <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css' />
     <link rel="stylesheet" href="assets/css/styleHome.css">
 
     <title>Game Swap - Search</title>
@@ -16,22 +14,51 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Game Swap</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home
+                <a class="nav-item nav-link active" href="#">Search
                     <span class="sr-only">(current)</span>
                 </a>
-                <a class="nav-item nav-link" href="#">Features</a>
-                <a class="nav-item nav-link" href="#">Pricing</a>
-                <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                <a class="nav-item nav-link" href="#">Profile</a>
+                <a class="nav-item nav-link" href="#">About</a>
             </div>
         </div>
     </nav>
+
+    <div class="container justify-content-center">
+        <form class="mt-4 login">
+            <div class="form-row align-items-center">
+                <div class="col-auto">
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Location</label>
+                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+                        <option selected>Choose...</option>
+                        <option value="1">UCF - University of Central Florida</option>
+                        <option value="2">Full Sail</option>
+                        <option value="3">Rollins College</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+        
+        <div id="users" class="mt-4">
+            <div class="user-header">
+                <h2>Available Users</h2>
+            </div>
+            <div id="users-results">
+
+            </div>
+        </div>
+    </div>
+
+
     {{{body}}}
 </body>
 
