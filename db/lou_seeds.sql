@@ -1,0 +1,1 @@
+INSERT INTO `gameswap_db`.`locations` ()
