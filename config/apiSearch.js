@@ -17,13 +17,16 @@ var game = function(name, image) {
 //empty array for game results
 var gameResults = [];
 
-//call for game
-client.games({
+//function for game search
+var gameSearch = function(){
+    //call for game
+    client.games({
     fields: '*', // Return all fields
     limit: 5, // Limit results
     offset: 0, // Index offset for results
     search: string
 }).then(function(response){
+    gameResults=[];
     for (i=0; i < response.body.length; i++) {
     //console.log(response.body[i].name)
     let imageId = response.body[i].cover.cloudinary_id
@@ -41,5 +44,6 @@ console.log("New Game: ", gameResults)
 }).catch(function(error){
     throw error;
 });
-
-
+}
+//export
+module.exports = gameSearch
