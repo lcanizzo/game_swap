@@ -1,6 +1,6 @@
 <div class="container justify-content-center">
     {{!-- method="post" action="/search" --}}
-    <form class="mt-4 login" method="post" action="/search"  >
+    <form class="mt-4 search-box" method="post" action="/search"  >
         <div class="form-row align-items-center">
             <div class="col-auto">
                 <label class="mr-sm-2" for="inlineFormCustomSelect">Location</label>
@@ -15,14 +15,6 @@
                 <button type="submit" class="btn btn-primary" id="search-btn">Submit</button>
             </div>
         </div>
-    </form>
-
-    <form class="form-inline" action="/gamesearch/destiny" method="POST">
-        <div class="form-group mx-sm-3">
-            <label for="inputPassword2" class="sr-only">Game Title</label>
-            <input type="input" class="form-control" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-primary">Search</button>
     </form>
 
     <div id="users" class="mt-4">
