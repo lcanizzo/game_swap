@@ -10,9 +10,10 @@ var client = igdb('be1ea7dccb14bcf3ae57b1e16d62cb74');
 let string = "Doom xbox one";
 
 //constructor function for creating game
-var game = function(name, image) {
+var game = function(name, image, id) {
     this.name = name;
     this.image = image;
+    this.id = id;
 }
 
 //empty array for game results
@@ -31,22 +32,24 @@ var gameSearch = function(search){
 }).then(function(response){
     gameResults=[];
     for (i=0; i < response.body.length; i++) {
-    let image;
+        let image;
     //console.log(response.body[i].name)
     //console.log(response.body[i])
-    if (response.body[i].cover){
-    let imageId = response.body[i].cover.cloudinary_id
+    //if statement where cover art is available
+        if (response.body[i].cover){
+            let imageId = response.body[i].cover.cloudinary_id
     //console.log("image ID", response.body[i].cover.cloudinary_id)
     // response.body contains the parsed JSON response to this query
-    image = client.image({
-        cloudinary_id: imageId, 
-    }, 'cover_big', 'jpg')
-}
-    else {
-        image = "//publications.iarc.fr/uploads/media/default/0001/02/thumb_1199_default_publication.jpeg"
-    }
+            image = client.image({
+                cloudinary_id: imageId, 
+                }, 'cover_big', 'jpg')
+        }   
+    //else set img link for when cover art is not available
+        else {
+            image = "//publications.iarc.fr/uploads/media/default/0001/02/thumb_1199_default_publication.jpeg"
+        }
     //console.log("Image link", image)
-    var newGame = new game(response.body[i].name, image)
+    var newGame = new game(response.body[i].name, image, response.body[i].id)
     //console.log("New Game: ", newGame)
     gameResults.push(newGame)
 }
