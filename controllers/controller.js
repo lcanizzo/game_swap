@@ -23,29 +23,24 @@ router.get("/search", function(request, response){
     console.log("Working Search");
 });
 
-router.post("/search_location", function(request, response){
-    
-    console.log("label")
+router.post("/search", function(request, response){
+    var locationID = request.body.location;
 
-      // TO DO: Make variable dynamic based on request
+    user.allBy( "locations_id", locationID, function(data) {
 
-
-    // user.allBy( "locations_id", 1, function(data) {
-
-    //     console.log("Post Result:" , data);
-    //     var hbsObject = {
-    //         users: data
-    //     };
-    //     console.log(hbsObject);
-    //     response.render("search", hbsObject);
-    //   });
-
+        console.log("Post Result:" , data);
+        var hbsObject = {
+            users: data
+        };
+        console.log(hbsObject);
+        response.render("search", hbsObject);
+      });
 })
 
 //Profile Page
 router.get("/username/:id", function(request, response){
     //render to profile handlebar
-    response.render("index")
+    response.render("user-page")
     console.log("Working Profile")
 })
 

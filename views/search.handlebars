@@ -1,14 +1,14 @@
 <div class="container justify-content-center">
     {{!-- method="post" action="/search" --}}
-    <form class="mt-4 login" method="post" action="/search_location"  >
+    <form class="mt-4 login" method="post" action="/search"  >
         <div class="form-row align-items-center">
             <div class="col-auto">
                 <label class="mr-sm-2" for="inlineFormCustomSelect">Location</label>
-                <select class="custom-select mb-2 mr-sm-2 mb-sm-0"  id="place">
+                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="location" >
                     <option selected>Choose...</option>
-                    <option name="location" value="1">UCF - University of Central Florida</option>
-                    <option name="location" value="2">Full Sail</option>
-                    <option name="location" value="3">Rollins College</option>
+                    <option  value="1">UCF - University of Central Florida</option>
+                    <option  value="2">Full Sail</option>
+                    <option  value="3">Rollins College</option>
                 </select>
             </div>
             <div class="col-auto">
@@ -17,15 +17,6 @@
         </div>
     </form>
 
-    <script type="text/javascript">
-        $("#search-btn").on('click', function(event){
-            event.preventDefault();
-
-            var LocationID = ($('#place').val());
-            console.log("location id : " + LocationID);
-
-        })
-    </script>
 
     <div id="users" class="mt-4">
         <div class="user-header">
@@ -35,7 +26,7 @@
             <ul>
                 {{#each users}}
                     <div class="container" style="background-color: white">
-                        <a href="#">{{name}}</a>
+                        <a href="/username/{{id}}">{{name}}</a>
                     </div>
                 {{/each}}
             </ul>
