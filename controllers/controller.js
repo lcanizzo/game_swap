@@ -19,7 +19,7 @@ router.get("/", function(request, response){
 //Home/Search Page
 router.get("/search", function(request, response){
     //render to search handlebar
-    response.render("index");
+    response.render("search");
     console.log("Working Search");
 });
 
@@ -34,7 +34,7 @@ router.post("/search", function(request, response){
             users: data
         };
         console.log(hbsObject);
-        response.render("index", hbsObject);
+        response.render("search", hbsObject);
       });
 
 })

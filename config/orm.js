@@ -6,11 +6,11 @@ function printQuestionMarks(num) {
     var arr = [];
   
     for (var i = 0; i < num; i++) {
-      arr.push("?");
+        arr.push("?");
     }
   
     return arr.toString();
-  }
+}
 
 // Helper function to convert object key/value pairs to SQL syntax???
 
