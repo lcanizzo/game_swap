@@ -72,9 +72,10 @@ router.post("/gamesearch/:string", function(request, response){
     
     var game = request.body.game
 
-    function gameBuilder(name, image) {
+    function gameBuilder(name, image, id) {
         this.name = name;
         this.image = image;
+        this.id = id;
     }
 
     var gameResults = [];
@@ -102,7 +103,7 @@ router.post("/gamesearch/:string", function(request, response){
                 image = "//publications.iarc.fr/uploads/media/default/0001/02/thumb_1199_default_publication.jpeg"
             }
             //console.log("Image link", image)
-            var newGame = new gameBuilder(data.body[i].name, image)
+            var newGame = new gameBuilder(data.body[i].name, image, data.body[i].id)
             // console.log("New Game: ", newGame)
             gameResults.push(newGame)
             console.log("Array: ", gameResults)            
@@ -114,7 +115,6 @@ router.post("/gamesearch/:string", function(request, response){
         };
     });
 })
-
 
 // this route gets activated when the submit button gets clicked.
 // this submit button is found in form for creating a new user
