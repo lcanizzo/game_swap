@@ -106,7 +106,11 @@ router.post("/gamesearch/:string", function(request, response){
             // console.log("New Game: ", newGame)
             gameResults.push(newGame)
             console.log("Array: ", gameResults)            
-            //console.log(image)
+            // console.log(image)
+                var hbsObject = {
+                    games: gameResults
+                };
+            response.render("index", gameResults);
         };
     });
 })
