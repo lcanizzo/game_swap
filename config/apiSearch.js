@@ -7,7 +7,7 @@ var client = igdb('be1ea7dccb14bcf3ae57b1e16d62cb74');
 //variable for game string
 //********************************* HARD CODED TITLE, NEEDS TO BE REPLACED WITH USER INPUT********************************** */
 //********************************** POSSIBLE TO CONCATONATE PLATFORM TO END OF TITLE, EX DOOM XBOX ONE BRINGS UP DIF THEN DOOM */
-let string = "Doom xbox one";
+let string = "Doom";
 
 //constructor function for creating game
 var game = function(name, image, id) {
@@ -20,7 +20,7 @@ var game = function(name, image, id) {
 var gameResults = [];
 
 //function for game search
-var gameSearch = function(search){
+var gameSearch = function(string){
     gameResults = [];
     //call for game
     client.games({
@@ -30,7 +30,7 @@ var gameSearch = function(search){
     //order: 'release_dates.date:desc',
     search: string
 }).then(function(response){
-    gameResults=[];
+    // gameResults=[];
     for (i=0; i < response.body.length; i++) {
         let image;
     //console.log(response.body[i].name)
@@ -50,16 +50,17 @@ var gameSearch = function(search){
         }
     //console.log("Image link", image)
     var newGame = new game(response.body[i].name, image, response.body[i].id)
-    //console.log("New Game: ", newGame)
+    console.log("New Game: ", newGame)
     gameResults.push(newGame)
 }
+    return gameResults
 console.log("New Game: ", gameResults)
 }).catch(function(error){
     throw error;
 });
 }
 
-gameSearch(string)
+console.log("Game Result Array:\n", gameSearch(string))
 //export
 module.exports = gameSearch
 
