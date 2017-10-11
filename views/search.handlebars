@@ -18,14 +18,18 @@
 
     <div id="users" class="mt-4">
         <div class="user-header">
-            <h2>Available Users</h2>
+            <h1>Local Users</h1>
         </div>
         <div id="users-results">
             <ul>
                 {{#each users}}
-                    <div class="container" style="background-color: white">
-                        <a href="/username/{{id}}">{{name}}</a>
+                <div class="card w-75 user-result-card">
+                    <div class="card-body">
+                        <h3 class="card-title">{{name}}</h3>
+                        <p class="card-text"></p>
+                        <a href="/username/{{id}}" class="btn btn-primary">View Profile</a>
                     </div>
+                </div>
                 {{/each}}
             </ul>
         </div>
