@@ -1,5 +1,10 @@
 <!--game search handlebars-->
 
+    <form method="post" action="/gamesearch">
+        <input type="text" name="game" placeholder="enter a game input">
+        <button type="submit">Submit</button>
+    </form>
+    
     <ul>
         {{#each games}}
             <div class="container" style="background-color: white">
