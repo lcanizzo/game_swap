@@ -6,11 +6,33 @@ nav{
     box-shadow: 0px 3px 10px 0px #0c5460;
 }
 
-.login{
+.fixed-middle{
+    height: 500px;
     width: 500px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -250px;
+}
+
+.login{
     background-color: #e8e8e8;
     box-shadow: 0px 3px 10px 0px #0c5460;
     padding: 20px;
+    margin: 0px auto;
+}
+
+.register-link {
+    color: white;
+    display: table;
+    margin: 10px auto;
+}
+
+.register-link a{
+    font-size: 80%;
+    color: darkslategray;
 }
 
 .login-header{

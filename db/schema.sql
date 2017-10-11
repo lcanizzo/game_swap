@@ -60,6 +60,8 @@ CREATE TABLE IF NOT EXISTS `gameswap_db`.`users` (
   `name` VARCHAR(45) NOT NULL,
   `email` VARCHAR(55) NOT NULL,
   `is_verified` BOOLEAN NULL,
+  `last_active` DATE,
+  `password` VARCHAR(35) NOT NULL,
   `users_meta_id` INT NULL,
   `locations_id` INT NOT NULL,
   PRIMARY KEY (`id`),
