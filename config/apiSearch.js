@@ -18,13 +18,13 @@ var game = function(name, image) {
 var gameResults = [];
 
 //function for game search
-var gameSearch = function(){
+var gameSearch = function(search){
     //call for game
     client.games({
     fields: '*', // Return all fields
     limit: 5, // Limit results
     offset: 0, // Index offset for results
-    search: string
+    search: search
 }).then(function(response){
     gameResults=[];
     for (i=0; i < response.body.length; i++) {
