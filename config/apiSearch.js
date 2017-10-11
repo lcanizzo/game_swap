@@ -5,6 +5,7 @@ var igdb = require('igdb-api-node').default;
 var client = igdb('be1ea7dccb14bcf3ae57b1e16d62cb74');
 
 //variable for game string
+//********************************* HARD CODED TITLE, NEEDS TO BE REPLACED WITH USER INPUT********************************** */
 let string = "halo";
 
 //constructor function for creating game
