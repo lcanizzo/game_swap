@@ -61,5 +61,18 @@ router.post("/gamesearch/:string", function(request, response){
     });
 });
 
+// this route gets activated when the submit button gets clicked.
+// this submit button is found in form for creating a new user
+router.post("/create-user", function(request, response){
+    user.create( "users",
+    // the cols of the users table,  is location_id necessary?
+    ["name", "email", "password", "locations_id"],
+    // the user input in the form that is the vals
+    [request.body.name, request.body.email, request.body.password, request.body.location],
+     function(data) {
+        console.log(data);
+    });
+});
+
 // Export routes for server.js to use.
 module.exports = router;

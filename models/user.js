@@ -12,13 +12,13 @@ var user = {
     allBy: function(cond, val, cb){
         orm.allBy("users", cond, val, function(res){
             cb(res);
-        })
+        });
     },
     create: function(vals,cols,val, cb){
         // creates a new user  
        orm.create("users", cols, val, function(res){
            cb(res);
-       })
+       });
    }
 }
 
