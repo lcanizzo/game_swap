@@ -9,7 +9,7 @@ var game = {
     allBy: function(cond, val, cb){
         orm.allBy("games", cond, val, function(res){
             cb(res);
-        })
+        });
     }
 }
 
