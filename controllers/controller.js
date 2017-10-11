@@ -110,7 +110,7 @@ router.post("/gamesearch/:string", function(request, response){
                 var hbsObject = {
                     games: gameResults
                 };
-            response.render("index", gameResults);
+            response.render("index", hbsObject);
         };
     });
 })
