@@ -40,8 +40,8 @@ router.post("/search", function(request, response){
 //Profile Page
 router.get("/username/:id", function(request, response){
     //render to profile handlebar
-    response.render("user-page");
-    console.log("Working Profile");
+    response.render("user-page")
+    console.log("Working Profile")
 })
 
 //Add Game Page
