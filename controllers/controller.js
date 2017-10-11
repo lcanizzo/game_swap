@@ -75,7 +75,9 @@ router.post("/gamesearch/:string", function(request, response){
     var game = request.body.game
     console.log(game)
     gameSearch.search(game, function (data) {
-        console.log (data.name);
+       for(i = 0; i < data.body.length; i++){
+           console.log(data.body[i].name)
+       };
     });
 });
 
