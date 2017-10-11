@@ -24,6 +24,12 @@ router.get("/search", function(request, response){
 
 router.post("/search", function(request, response){
     var locationID = request.body.location;
+    response.redirect("/search/"+locationID);
+});
+
+router.get("/search/:locationID", function(request, response){
+    var locationID = request.params.locationID;
+    
     user.allBy( "locations_id", locationID, function(data) {
         // console.log("Post Result:" , data);
         var hbsObject = {
@@ -32,23 +38,7 @@ router.post("/search", function(request, response){
         console.log("Passing object", hbsObject);
         response.render("search", hbsObject);
     });
-    // response.redirect("/search/"+locationID);
 });
-
-// Get search results and static files working with router.get
-// --------------------------------------------------------------
-// router.get("/search/:locationID", function(request, response){
-//     var locationID = request.params.locationID;
-    
-    // user.allBy( "locations_id", locationID, function(data) {
-    //     // console.log("Post Result:" , data);
-    //     var hbsObject = {
-    //         users: data
-    //     };
-    //     console.log("Passing object", hbsObject);
-    //     response.render("search", hbsObject);
-    // });
-// });
 
 //Profile Page
 router.get("/username/:id", function(request, response){
