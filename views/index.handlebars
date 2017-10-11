@@ -9,17 +9,6 @@
         <a class="btn btn-block btn-social btn-twitter">
             <span class="fa fa-twitter"></span> Sign in with Twitter
         </a>
-
-
-        <form method="post" action="/gamesearch/:string">
-            <input type="text" name="game" placeholder="enter a game input">
-        <button type="submit">Submit</button>
-
-        <script>
-            
-        </script>
-        
-    </form>
     </div>
 
     <form method="post" action="/gamesearch/:string">
@@ -27,6 +16,14 @@
         <button type="submit">Submit</button>
     </form>
 
+    <ul>
+        {{#each games}}
+            <div class="container" style="background-color: white">
+                <h1>Hello</h1>
+            </div>
+        {{/each}}
+    </ul>
+        
     
 
 </div>
