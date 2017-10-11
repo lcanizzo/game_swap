@@ -21,7 +21,13 @@
             <h2>Available Users</h2>
         </div>
         <div id="users-results">
-
+            <ul>
+                {{#each users}}
+                    <div class="container" style="background-color: white">
+                        <a href="#">{{name}}</a>
+                    </div>
+                {{/each}}
+            </ul>
         </div>
     </div>
 </div>
