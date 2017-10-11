@@ -16,26 +16,29 @@ router.get("/", function(request, response){
     console.log("Working Login")
 })
 
-//Home/Search Page
+// Home/Search Page
 router.get("/search", function(request, response){
     //render to search handlebar
     response.render("search");
-    console.log("Working Search");
 });
 
 router.post("/search", function(request, response){
     var locationID = request.body.location;
+    response.redirect("/search/"+locationID);
+});
 
+router.get("/search/:locationID", function(request, response){
+    var locationID = request.params.locationID;
+    
     user.allBy( "locations_id", locationID, function(data) {
-
-        console.log("Post Result:" , data);
+        // console.log("Post Result:" , data);
         var hbsObject = {
             users: data
         };
-        console.log(hbsObject);
+        console.log("Passing object", hbsObject);
         response.render("search", hbsObject);
-      });
-})
+    });
+});
 
 //Profile Page
 router.get("/username/:id", function(request, response){
