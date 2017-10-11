@@ -1,7 +1,7 @@
 // Import express package
 var express = require("express")
 //Importing apiSearch.js
-var gameSearch = require("../config/apiSearch.js")
+var gameSearch = require("../models/search.js")
 // Establish router via express
 var router = express.Router();
 
@@ -24,10 +24,10 @@ router.get("/search", function(request, response){
 });
 
 router.post("/search", function(request, response){
-    var locationID = 3; // TO DO: Make variable dynamic based on request
-    console.log("Location ID: ", locationID);
+    var locationID = request.body.location;
 
-    user.allBy("locations_id", locationID ,function(data) {
+    user.allBy( "locations_id", locationID, function(data) {
+
         console.log("Post Result:" , data);
         var hbsObject = {
             users: data
@@ -40,7 +40,7 @@ router.post("/search", function(request, response){
 //Profile Page
 router.get("/username/:id", function(request, response){
     //render to profile handlebar
-    response.render("index")
+    response.render("user-page")
     console.log("Working Profile")
 })
 
@@ -54,11 +54,12 @@ router.get("/add/:username/:id", function(request, response){
 //Post game search
 //*****************************************NEEDS TO BE TESTED TO MAKE SURE CALLING CORRECTLY*************************/
 router.post("/gamesearch/:string", function(request, response){
+    console.log("Looking for games");
     var string = request.params.string
-    //gameSearch(string)
-    console.log(gameSearch(string))
-
-})
+    gameSearch.search(string, function (data) {
+        console.log (data);
+    });
+});
 
 // Export routes for server.js to use.
 module.exports = router;
