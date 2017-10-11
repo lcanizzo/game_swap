@@ -86,9 +86,9 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `gameswap_db`.`games` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
-  `genre` VARCHAR(45) NOT NULL,
+  `genre` VARCHAR(45),
   `year` YEAR NULL,
-  `platform` VARCHAR(30) NOT NULL,
+  `platform` VARCHAR(30),
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
