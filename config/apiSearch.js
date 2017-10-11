@@ -17,7 +17,7 @@ function game(name, image, id) {
 
 var apiSearch = {
     gameSearch: function (string, cb) {
-        var gameResults = [];
+        //var gameResults = [];
         //call for game
         client.games({
             fields: '*', // Return all fields
