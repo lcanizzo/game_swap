@@ -24,10 +24,10 @@ router.get("/search", function(request, response){
 });
 
 router.post("/search", function(request, response){
-    var locationID = 3; // TO DO: Make variable dynamic based on request
-    console.log("Location ID: ", locationID);
+    var locationID = request.body.location;
 
-    user.allBy("locations_id", locationID ,function(data) {
+    user.allBy( "locations_id", locationID, function(data) {
+
         console.log("Post Result:" , data);
         var hbsObject = {
             users: data
@@ -40,7 +40,7 @@ router.post("/search", function(request, response){
 //Profile Page
 router.get("/username/:id", function(request, response){
     //render to profile handlebar
-    response.render("index")
+    response.render("user-page")
     console.log("Working Profile")
 })
 
