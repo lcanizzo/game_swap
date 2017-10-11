@@ -80,6 +80,7 @@ router.get("/gamesearch/:game", function(request, response){
     function gameBuilder(name, image) {
         this.name = name;
         this.image = image;
+        this.id = id;
     }
     let game = request.params.game;
     var gameResults = [];
@@ -107,7 +108,7 @@ router.get("/gamesearch/:game", function(request, response){
                 image = "//publications.iarc.fr/uploads/media/default/0001/02/thumb_1199_default_publication.jpeg"
             }
             //console.log("Image link", image)
-            var newGame = new gameBuilder(data.body[i].name, image)
+            var newGame = new gameBuilder(data.body[i].name, image, data.body[i].id)
             // console.log("New Game: ", newGame)
             gameResults.push(newGame)
             console.log("Array: ", gameResults)   

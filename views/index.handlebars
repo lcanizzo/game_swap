@@ -15,5 +15,19 @@
         <input type="text" name="game" placeholder="enter a game input">
         <button type="submit">Submit</button>
     </form>
+<<<<<<< HEAD
+=======
+
+    <ul>
+        {{#each games}}
+            <div class="container" style="background-color: white">
+                {{!-- <h1>Hello</h1> --}}
+                <h3>{{name}}</h3>
+                <img src={{image}}>
+                <form method="post" action="/"><button type ="submit">Add Game to Library</button></form>
+            </div>
+        {{/each}}
+    </ul>
+>>>>>>> 745f3b83dab2e912371320c84da9a17e564a44d7
 </div>
 
