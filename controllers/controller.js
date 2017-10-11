@@ -57,17 +57,17 @@ router.get("/add/:username/:id", function(request, response){
 //Post game search
 //*****************************************NEEDS TO BE TESTED TO MAKE SURE CALLING CORRECTLY*************************/
 router.post("/gamesearch/:string", function(request, response){
-    console.log("Looking for games");
-    var string = request.params.string
-    gameSearch.search(string, function (data) {
-        console.log (data);
-    });
-    
-    // var game = request.body.game
-    // console.log(game)
-    // gameSearch.search(game, function (data) {
+    // console.log("Looking for games");
+    // var string = request.params.string
+    // gameSearch.search(string, function (data) {
     //     console.log (data);
     // });
+    
+    var game = request.body.game
+    console.log(game)
+    gameSearch.search(game, function (data) {
+        console.log (data);
+    });
 });
 
 // this route gets activated when the submit button gets clicked.
