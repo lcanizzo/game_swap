@@ -10,7 +10,7 @@ var client = igdb('be1ea7dccb14bcf3ae57b1e16d62cb74');
 let string = "Doom";
 
 //constructor function for creating game
-var game = function(name, image, id) {
+var game = function (name, image, id) {
     this.name = name;
     this.image = image;
     this.id = id;
@@ -20,47 +20,49 @@ var game = function(name, image, id) {
 var gameResults = [];
 
 //function for game search
-var gameSearch = function(string){
+var gameSearch = function (string) {
     gameResults = [];
     //call for game
     client.games({
-    fields: '*', // Return all fields
-    limit: 1, // Limit results
-    offset: 0, // Index offset for results
-    //order: 'release_dates.date:desc',
-    search: string
-}).then(function(response){
-    // gameResults=[];
-    for (i=0; i < response.body.length; i++) {
-        let image;
-    //console.log(response.body[i].name)
-    //console.log(response.body[i])
-    //if statement where cover art is available
-        if (response.body[i].cover){
-            let imageId = response.body[i].cover.cloudinary_id
-    //console.log("image ID", response.body[i].cover.cloudinary_id)
-    // response.body contains the parsed JSON response to this query
-            image = client.image({
-                cloudinary_id: imageId, 
+        fields: '*', // Return all fields
+        limit: 1, // Limit results
+        offset: 0, // Index offset for results
+        //order: 'release_dates.date:desc',
+        search: string
+    }).then(function (response) {
+        // gameResults=[];
+        for (i = 0; i < response.body.length; i++) {
+            let image;
+            //console.log(response.body[i].name)
+            //console.log(response.body[i])
+            //if statement where cover art is available
+            if (response.body[i].cover) {
+                let imageId = response.body[i].cover.cloudinary_id
+                //console.log("image ID", response.body[i].cover.cloudinary_id)
+                // response.body contains the parsed JSON response to this query
+                image = client.image({
+                    cloudinary_id: imageId,
                 }, 'cover_big', 'jpg')
-        }   
-    //else set img link for when cover art is not available
-        else {
-            image = "//publications.iarc.fr/uploads/media/default/0001/02/thumb_1199_default_publication.jpeg"
+            }
+            //else set img link for when cover art is not available
+            else {
+                image = "//publications.iarc.fr/uploads/media/default/0001/02/thumb_1199_default_publication.jpeg"
+            }
+            //console.log("Image link", image)
+            var newGame = new game(response.body[i].name, image, response.body[i].id)
+            // console.log("New Game: ", newGame)
+            gameResults.push(newGame)
         }
-    //console.log("Image link", image)
-    var newGame = new game(response.body[i].name, image, response.body[i].id)
-    console.log("New Game: ", newGame)
-    gameResults.push(newGame)
-}
-    return gameResults
-console.log("New Game: ", gameResults)
-}).catch(function(error){
-    throw error;
-});
+        console.log("Game Result: ", gameResults)
+        return gameResults
+    }).catch(function (error) {
+        throw error;
+    });
 }
 
-console.log("Game Result Array:\n", gameSearch(string))
+var test = gameSearch(string);
+console.log("Test", test);
+
 //export
-module.exports = gameSearch
+// module.exports = gameSearch
 
