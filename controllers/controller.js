@@ -1,7 +1,10 @@
 // Import express package
 var express = require("express")
+//Importing apiSearch.js
+var apiSearch = require("../config/apiSearch.js")
 // Establish router via express
 var router = express.Router();
+
 
 // Import the model to use its database functions.
 var user = require("../models/user.js");
@@ -46,6 +49,13 @@ router.get("/add/:username/:id", function(request, response){
     //render to add game handlebar
     response.render("index")
     console.log("Working Add Game")
+})
+
+//Post game search
+//*****************************************NEEDS TO BE TESTED TO MAKE SURE CALLING CORRECTLY*************************/
+router.post("/gamesearch/:string", function(request, response){
+    var search = request.params(string)
+    apiSearch(search)
 })
 
 // Export routes for server.js to use.
