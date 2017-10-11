@@ -12,3 +12,14 @@ nav {
     padding: 20px;
     margin: 0px auto;
 }
+
+.user-result-card {
+    background-color: #e8e8e8;
+    margin-top: 10px;
+    margin-left: 13%;
+    box-shadow: 0px 3px 10px 0px #0c5460;
+}
+
+.user-header {
+    text-align: center;
+}
