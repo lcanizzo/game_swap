@@ -21,7 +21,7 @@ var apiSearch = {
         //call for game
         client.games({
             fields: '*', // Return all fields
-            limit: 3, // Limit results
+            limit: 5, // Limit results
             offset: 0, // Index offset for results
             //order: 'release_dates.date:desc',
             search: string
@@ -34,4 +34,5 @@ var apiSearch = {
 
 //export
 module.exports = apiSearch;
+
 

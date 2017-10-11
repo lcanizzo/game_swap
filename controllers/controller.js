@@ -1,3 +1,10 @@
+//require igdb npm package
+const igdb = require('igdb-api-node').default;
+
+//set api key to variable 
+const client = igdb('be1ea7dccb14bcf3ae57b1e16d62cb74');
+
+
 // Import express package
 var express = require("express")
 //Importing apiSearch.js
@@ -67,18 +74,44 @@ router.get("/add/:username/:id", function(request, response){
 //Post game search
 //*****************************************NEEDS TO BE TESTED TO MAKE SURE CALLING CORRECTLY*************************/
 router.post("/gamesearch/:string", function(request, response){
-    console.log("Looking for games");
-    var string = request.params.string
-    gameSearch.search(string, function (data) {
-        console.log (data);
-    });
-    
-    // var game = request.body.game
-    // console.log(game)
-    // gameSearch.search(game, function (data) {
+    // console.log("Looking for games");
+    // var string = request.params.string
+    // gameSearch.search(string, function (data) {
     //     console.log (data);
     // });
-});
+    
+    var game = request.body.game
+    
+    //console.log(game)
+    gameSearch.search(game, function (data) {
+        //console.log (data);
+        for (i = 0; i < data.body.length; i++) {
+            let image;
+            console.log(data.body[i].name)
+            //console.log(data.body[i])
+            //if statement where cover art is available
+            if (data.body[i].cover) {
+                let imageId = data.body[i].cover.cloudinary_id
+                //console.log("image ID", data.body[i].cover.cloudinary_id)
+                // data.body contains the parsed JSON response to this query
+                image = client.image({
+                    cloudinary_id: imageId,
+                }, 'cover_big', 'jpg')
+            }
+            
+            //else set img link for when cover art is not available
+            else {
+                image = "//publications.iarc.fr/uploads/media/default/0001/02/thumb_1199_default_publication.jpeg"
+            }
+            //console.log("Image link", image)
+            //var newGame = new game(response.body[i].name, image, response.body[i].id)
+            // console.log("New Game: ", newGame)
+            //gameResults.push(newGame)
+            console.log(image)
+        };
+        
+    });
+})
 
 // this route gets activated when the submit button gets clicked.
 // this submit button is found in form for creating a new user
@@ -92,6 +125,7 @@ router.post("/create-user", function(request, response){
         console.log(data);
     });
 });
+
 
 
 
