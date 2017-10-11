@@ -1,17 +1,18 @@
 <div class="container justify-content-center">
-    <form class="mt-4 login" method="post" action="/search">
+    {{!-- method="post" action="/search" --}}
+    <form class="mt-4 search-box" method="post" action="/search"  >
         <div class="form-row align-items-center">
             <div class="col-auto">
                 <label class="mr-sm-2" for="inlineFormCustomSelect">Location</label>
-                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="locations_id">
+                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="location" >
                     <option selected>Choose...</option>
-                    <option value="1">UCF - University of Central Florida</option>
-                    <option value="2">Full Sail</option>
-                    <option value="3">Rollins College</option>
+                    <option  value="1">UCF - University of Central Florida</option>
+                    <option  value="2">Full Sail</option>
+                    <option  value="3">Rollins College</option>
                 </select>
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" id="search-btn">Submit</button>
             </div>
         </div>
     </form>
@@ -21,7 +22,13 @@
             <h2>Available Users</h2>
         </div>
         <div id="users-results">
-
+            <ul>
+                {{#each users}}
+                    <div class="container" style="background-color: white">
+                        <a href="/username/{{id}}">{{name}}</a>
+                    </div>
+                {{/each}}
+            </ul>
         </div>
     </div>
 </div>
