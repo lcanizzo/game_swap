@@ -63,6 +63,11 @@ router.get("/add/:username/:id", function(request, response){
 
 //Post game search
 //*****************************************NEEDS TO BE TESTED TO MAKE SURE CALLING CORRECTLY*************************/
+
+router.get("/gamesearch", function(request, response){
+response.render("gamesearch")
+})
+
 router.post("/gamesearch", function(request, response){
     // console.log("Looking for games");
     // var string = request.params.string
