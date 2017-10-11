@@ -23,19 +23,22 @@ router.get("/search", function(request, response){
     console.log("Working Search");
 });
 
-router.post("/search", function(request, response){
-    var locationID = 1  // TO DO: Make variable dynamic based on request
-    console.log("Location ID: ", locationID);
+router.post("/search_location", function(request, response){
+    
+    console.log("label")
 
-    user.allBy( "locations_id", locationID, function(data) {
+      // TO DO: Make variable dynamic based on request
 
-        console.log("Post Result:" , data);
-        var hbsObject = {
-            users: data
-        };
-        console.log(hbsObject);
-        response.render("search", hbsObject);
-      });
+
+    // user.allBy( "locations_id", 1, function(data) {
+
+    //     console.log("Post Result:" , data);
+    //     var hbsObject = {
+    //         users: data
+    //     };
+    //     console.log(hbsObject);
+    //     response.render("search", hbsObject);
+    //   });
 
 })
 
