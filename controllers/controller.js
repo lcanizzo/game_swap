@@ -59,6 +59,11 @@ router.post("/gamesearch/:string", function(request, response){
     gameSearch.search(string, function (data) {
         console.log (data);
     });
+    // var game = request.body.game
+    // console.log(game)
+    // gameSearch.search(game, function (data) {
+    //     console.log (data);
+    // });
 });
 
 // this route gets activated when the submit button gets clicked.
@@ -73,6 +78,8 @@ router.post("/create-user", function(request, response){
         console.log(data);
     });
 });
+
+
 
 // Export routes for server.js to use.
 module.exports = router;
