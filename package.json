@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/lcanizzo/game_swap#readme",
   "dependencies": {
+    "basic-auth": "^2.0.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.1",
     "express-handlebars": "^3.0.0",

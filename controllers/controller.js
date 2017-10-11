@@ -16,26 +16,39 @@ router.get("/", function(request, response){
     console.log("Working Login")
 })
 
-//Home/Search Page
+// Home/Search Page
 router.get("/search", function(request, response){
     //render to search handlebar
     response.render("search");
-    console.log("Working Search");
 });
 
 router.post("/search", function(request, response){
     var locationID = request.body.location;
-
     user.allBy( "locations_id", locationID, function(data) {
-
-        console.log("Post Result:" , data);
+        // console.log("Post Result:" , data);
         var hbsObject = {
             users: data
         };
-        console.log(hbsObject);
+        console.log("Passing object", hbsObject);
         response.render("search", hbsObject);
-      });
-})
+    });
+    // response.redirect("/search/"+locationID);
+});
+
+// Get search results and static files working with router.get
+// --------------------------------------------------------------
+// router.get("/search/:locationID", function(request, response){
+//     var locationID = request.params.locationID;
+    
+    // user.allBy( "locations_id", locationID, function(data) {
+    //     // console.log("Post Result:" , data);
+    //     var hbsObject = {
+    //         users: data
+    //     };
+    //     console.log("Passing object", hbsObject);
+    //     response.render("search", hbsObject);
+    // });
+// });
 
 //Profile Page
 router.get("/username/:id", function(request, response){
@@ -59,7 +72,28 @@ router.post("/gamesearch/:string", function(request, response){
     gameSearch.search(string, function (data) {
         console.log (data);
     });
+    
+    // var game = request.body.game
+    // console.log(game)
+    // gameSearch.search(game, function (data) {
+    //     console.log (data);
+    // });
 });
+
+// this route gets activated when the submit button gets clicked.
+// this submit button is found in form for creating a new user
+router.post("/create-user", function(request, response){
+    user.create( "users",
+    // the cols of the users table,  is location_id necessary?
+    ["name", "email", "password", "locations_id"],
+    // the user input in the form that is the vals
+    [request.body.name, request.body.email, request.body.password, request.body.location],
+     function(data) {
+        console.log(data);
+    });
+});
+
+
 
 // Export routes for server.js to use.
 module.exports = router;
