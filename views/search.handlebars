@@ -1,0 +1,27 @@
+<div class="container justify-content-center">
+    <form class="mt-4 login" method="post" action="/search">
+        <div class="form-row align-items-center">
+            <div class="col-auto">
+                <label class="mr-sm-2" for="inlineFormCustomSelect">Location</label>
+                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="locations_id">
+                    <option selected>Choose...</option>
+                    <option value="1">UCF - University of Central Florida</option>
+                    <option value="2">Full Sail</option>
+                    <option value="3">Rollins College</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="users" class="mt-4">
+        <div class="user-header">
+            <h2>Available Users</h2>
+        </div>
+        <div id="users-results">
+
+        </div>
+    </div>
+</div>
