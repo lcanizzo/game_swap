@@ -81,13 +81,21 @@ router.post("/gamesearch/:string", function(request, response){
     // });
     
     var game = request.body.game
+
+    function gameBuilder(name, image) {
+        this.name = name;
+        this.image = image;
+    }
+
+    var gameResults = [];
     
     //console.log(game)
     gameSearch.search(game, function (data) {
+        gameResults=[];
         //console.log (data);
         for (i = 0; i < data.body.length; i++) {
             let image;
-            console.log(data.body[i].name)
+            // console.log(data.body[i].name)
             //console.log(data.body[i])
             //if statement where cover art is available
             if (data.body[i].cover) {
@@ -104,14 +112,15 @@ router.post("/gamesearch/:string", function(request, response){
                 image = "//publications.iarc.fr/uploads/media/default/0001/02/thumb_1199_default_publication.jpeg"
             }
             //console.log("Image link", image)
-            //var newGame = new game(response.body[i].name, image, response.body[i].id)
+            var newGame = new gameBuilder(data.body[i].name, image)
             // console.log("New Game: ", newGame)
-            //gameResults.push(newGame)
-            console.log(image)
+            gameResults.push(newGame)
+            console.log("Array: ", gameResults)            
+            //console.log(image)
         };
-        
     });
 })
+
 
 // this route gets activated when the submit button gets clicked.
 // this submit button is found in form for creating a new user
@@ -125,9 +134,6 @@ router.post("/create-user", function(request, response){
         console.log(data);
     });
 });
-
-
-
 
 // Export routes for server.js to use.
 module.exports = router;
