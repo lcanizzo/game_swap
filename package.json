@@ -23,6 +23,7 @@
     "express-handlebars": "^3.0.0",
     "igdb-api-node": "^3.0.2",
     "mysql": "^2.15.0",
+    "passport-google-oauth": "^1.0.0",
     "path": "^0.12.7"
   }
 }
