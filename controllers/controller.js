@@ -80,7 +80,7 @@ router.get("/gamesearch/:game", function(request, response){
     function gameBuilder(name, image) {
         this.name = name;
         this.image = image;
-        this.id = id;
+        // this.id = id;
     }
     let game = request.params.game;
     var gameResults = [];

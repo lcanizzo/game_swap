@@ -4,7 +4,9 @@
         {{#each games}}
             <div class="container" style="background-color: white">
                 {{!-- <h1>Hello</h1> --}}
-                <h1>{{name}}</h1>
+                <h3>{{name}}</h3>
+                <img src={{image}}>
+                <form method="post" action="/"><button type ="submit">Add Game to Library</button></form>
             </div>
         {{/each}}
     </ul>
