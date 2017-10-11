@@ -33,7 +33,7 @@ router.post("/search", function(request, response){
             users: data
         };
         console.log(hbsObject);
-        response.render("search", hbsObject);
+        response.render("index", hbsObject);
       });
 })
 
