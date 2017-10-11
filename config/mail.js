@@ -21,7 +21,7 @@ let mailOptions = {
     //our email address
     from: '"Game Swap" <gameswapu@gmail.com>',
     //user email
-    to: 'bryanporras2033@gmail.com', //****NEEDS TO BE SET TO VAR FOR USER EMAIL*****/
+    to: 'luca.canizzo@gmail.com', //****NEEDS TO BE SET TO VAR FOR USER EMAIL*****/
     //subject line
     subject: 'You currently have a trade request!',
     //text and html
