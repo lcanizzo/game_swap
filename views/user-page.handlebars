@@ -5,10 +5,13 @@
             <div class="row justify-content-between">
                 <div class="col profile-tabs">
                     <div class="card profile-links-card">
+                        {{#each users_id}}
+                        <form method="GET" action="/username/{{id}}">
                         <button class="card-link-div btn btn-warning">
                             Profile
                         </button>
-                        <form method="GET" action="/library/:id?">
+                        </form>
+                        <form method="GET" action="/library/{{id}}">
                         <button class="card-link-div btn btn-warning">
                             Library
                         </button>
@@ -19,7 +22,6 @@
                     </div>
                 </div>
                 <div class="col-8">
-                    {{#each users_id}}
                     <div class="card profile-card">
                         <h3 class="card-header">{{name}}</h3>
                         <div class="card-body row">

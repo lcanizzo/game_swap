@@ -99,7 +99,15 @@ router.get("/add/:username/:id", function(request, response){
 // User Library
 router.get("/library/:id?", function(request, response){
     //render to library handlebar
-    response.render("user-library");
+    user.allBy("id",request.params.id, function(data){
+        console.log(data);
+
+        let hbsObject = {
+            users_id : data            
+        }
+        //render to profile handlebar
+        response.render("user-library",hbsObject);
+    });
 });
 
 //Post game search
