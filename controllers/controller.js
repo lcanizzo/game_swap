@@ -215,11 +215,11 @@ router.get("/create-game/:name/:id", function(request, response){
             game.addtoUsers(["games_id", "users_id"], [gameId, userID], function(data){
                 console.log(data)
             });
-            // response.render("gamesearch");
+            response.render("gamesearch");
          });
         } else {
             console.log("Game is already in the database", data);
-            // response.render("gamesearch");
+            response.render("gamesearch");
         }
     });
 
