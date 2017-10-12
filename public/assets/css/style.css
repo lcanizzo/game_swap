@@ -55,10 +55,16 @@ nav {
 .profile-links-card{
     height: 100%;
     padding-top: 15px;
+    background-color: rgb(241, 192, 37)    
 }
 
 .card-link-div{
+    color: floralwhite;
     text-align: center;
-    margin-top: 30px;
+    min-height: 30%;
     font-size: 40pt;
+    border-radius: .25rem;
+    background-color: rgb(241, 192, 37);
+    border-width: 0;
+    white-space: normal;
 }
