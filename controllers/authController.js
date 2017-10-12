@@ -3,7 +3,6 @@ const express = require("express")
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const currentuserID = require('../config/currentuser.js');
-const user = require("../models/user.js");
 
 // Establish router via express
 var router = express.Router();

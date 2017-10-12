@@ -59,17 +59,13 @@ var orm ={
         });
     },
 
-    UPDATE table_name
-    SET column1 = value1, column2 = value2, ...
-    WHERE condition;
-
-    update: function (table, cond, val, cb) {
+    update: function (table, cond, vals, cb) {
         var condition = cond;
-        var queryString = "UPDATE * FROM " + table + " WHERE " + condition + " = ? ;";
+        var queryString = "UPDATE" + table + " SET " + vals + "WHERE " + cond;
 
         console.log("ORM Searching for: " + queryString);
  
-        connection.query(queryString, val, function (err, result) {
+        connection.query(queryString, vals, function (err, result) {
             console.log("ORM Result", result);
             cb(result);
         });
