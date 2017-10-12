@@ -31,6 +31,8 @@ router.get("/search", function(request, response){
 
 router.post("/search", function(request, response){
     var locationID = request.body.location;
+    var userID = request.session.user.id;
+
     response.redirect("/search/"+locationID);
 });
 
