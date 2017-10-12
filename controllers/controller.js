@@ -103,11 +103,21 @@ router.get("/library/:id?", function(request, response){
     console.log("You are in the library page")
 
     user.allBy("id", request.params.id, function(data){
-        // console.log(data);
-        // console.log(request.params.id)
 
-       let userID= request.params.id
-        let userGames =[]
+        let userID= request.params.id;
+        let userGames =[];
+        let users_id = [];
+        // set up users_id object
+        user.allBy("id", userID, function(data){
+            // console.log("User Data:\n", data);
+            let userInfo = {}
+            let name = data[0].name;
+            let id = data[0].name;
+            userInfo.name = name;
+            userInfo.id = id;
+            users_id.push(userInfo);
+        });
+
         user.gameList("users_id", userID, function(data){
             for(let i=0; i < data.length; i++){
                 game.allBy("id", data[i].games_id, function(game){
@@ -118,20 +128,23 @@ router.get("/library/:id?", function(request, response){
                        };
                        userGames.push(libraryGame);
                        console.log(userGames);
+
+                       if (userGames.length == data.length) {
+                            let hbsObject = {
+                                users_id : users_id,
+                                games: userGames
+                            }
+                        //render to profile handlebar
+                        // console.log("USER_ID for VIEWS:\n", users_id)                        
+                        // console.log("Handlebars O B J E C T: \n", hbsObject)                        
+                        response.render("user-library", hbsObject);
+                        }
                    }
                 });
             }
         });
 
-        let hbsObject = {
-            users_id : data,
-            games: userGames
-        }
-        //render to profile handlebar
-        response.render("user-library", hbsObject);
     });
-
-
 });
 
 //Post game search
