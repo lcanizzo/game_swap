@@ -4,19 +4,23 @@ const igdb = require('igdb-api-node').default;
 //set api key to variable 
 const client = igdb('be1ea7dccb14bcf3ae57b1e16d62cb74');
 
-
 // Import current user id from session
 const currentuserID = require('../config/currentuser.js');
 
+//require mail.js
 var mail = require("../config/mail.js")
+
+//require node mailer
 var nodemailer = require("nodemailer")
+
 // Import express package
 var express = require("express")
+
 //Importing apiSearch.js
 var gameSearch = require("../models/search.js")
+
 // Establish router via express
 var router = express.Router();
-
 
 // Import the model to use its database functions.
 var user = require("../models/user.js");
