@@ -4,6 +4,10 @@ const igdb = require('igdb-api-node').default;
 //set api key to variable 
 const client = igdb('be1ea7dccb14bcf3ae57b1e16d62cb74');
 
+
+// Import current user id from session
+const currentuserID = require('../config/currentuser.js');
+
 var mail = require("../config/mail.js")
 var nodemailer = require("nodemailer")
 // Import express package
@@ -32,6 +36,7 @@ router.get("/search", function(request, response){
 
 router.post("/search", function(request, response){
     var locationID = request.body.location;
+    // userID = currentuserID.currentID;
 
     response.redirect("/search/"+locationID);
 });
@@ -67,7 +72,8 @@ router.get("/username/:id", function(request, response){
 
 //user
 router.get("/username", function(request, response){
-    let userID = request.session.passport.user[0].id;
+    let userID = currentuserID.currentID;
+    console.log("User ID in .GET:\n", userID);
     user.allBy("id", userID, function(data){
         console.log(data);
 
