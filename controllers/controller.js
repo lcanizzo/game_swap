@@ -110,12 +110,14 @@ router.get("/library/:id?", function(request, response){
         let userGames =[]
         user.gameList("users_id", userID, function(data){
             for(let i=0; i < data.length; i++){
-                // userGames.push(data[i].games_id)
-                // console.log(userGames);
-
                 game.allBy("id", data[i].games_id, function(game){
                    for(i = 0; i < game.length; i ++){
-                       console.log("Game Name: " + game[i].name);
+
+                       let libraryGame = {
+                           name: game[i].name
+                       };
+                       userGames.push(libraryGame);
+                       console.log(userGames);
                    }
                 });
             }
@@ -123,7 +125,7 @@ router.get("/library/:id?", function(request, response){
 
         let hbsObject = {
             users_id : data,
-            // games: userGames
+            games: userGames
         }
         //render to profile handlebar
         response.render("user-library", hbsObject);
