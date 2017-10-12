@@ -80,6 +80,10 @@ nav {
     box-shadow: 0px 3px 10px 0px #0c5460;
 }
 
+#addGame {
+    margin-top: 5%;
+}
+
 .games-cols {
     min-width: 45%;
     max-width: 45%;
