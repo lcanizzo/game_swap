@@ -193,17 +193,21 @@ router.get("/create-game/:name/:id", function(request, response){
 
     var gameTitle = request.params.name;
     var gameId = request.params.id;
+    let userID = currentuserID.currentID;
 
     game.allBy("id", gameId, function(data){
         if (data.length < 1){
         console.log("No matching games, Making creating that game to the database");
         game.create(["id", "name"], [gameId, gameTitle], function(data){
                 console.log(data);
-                response.render("gamesearch");
+            game.addtoUsers(["games_id", "users_id"], [gameId, userID], function(data){
+                console.log(data)
+            });
+            // response.render("gamesearch");
          });
         } else {
             console.log("Game is already in the database", data);
-            response.render("gamesearch");
+            // response.render("gamesearch");
         }
     });
 
