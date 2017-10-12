@@ -5,7 +5,7 @@ var connection;
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
-    const localpw = require("./connection-pws.js");
+    var localpw = require("./connection-pws.js");
     connection = mysql.createConnection({
         port: 3306,
         host: "localhost",
