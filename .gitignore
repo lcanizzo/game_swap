@@ -58,5 +58,5 @@ typings/
 .env
 
 #connection-passwords file
-/config/connection-pws.js
+
 
