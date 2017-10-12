@@ -4,8 +4,12 @@ const igdb = require('igdb-api-node').default;
 //set api key to variable 
 const client = igdb('be1ea7dccb14bcf3ae57b1e16d62cb74');
 
+
 // Import current user id from session
 const currentuserID = require('../config/currentuser.js');
+
+var mail = require("../config/mail.js")
+var nodemailer = require("nodemailer")
 // Import express package
 var express = require("express")
 //Importing apiSearch.js
@@ -32,7 +36,7 @@ router.get("/search", function(request, response){
 
 router.post("/search", function(request, response){
     var locationID = request.body.location;
-    // var userID = currentuserID;   TEST OUTPUT IS VALID
+    // userID = currentuserID.currentID;
 
     response.redirect("/search/"+locationID);
 });
@@ -116,10 +120,10 @@ router.post("/gamesearch", function(request, response){
 })
 
 router.get("/gamesearch/:game", function(request, response){    
-    function gameBuilder(name, image) {
+    function gameBuilder(name, image, id) {
         this.name = name;
         this.image = image;
-        // this.id = id;
+        this.id = id;
     }
     let game = request.params.game;
     var gameResults = [];
@@ -160,6 +164,16 @@ router.get("/gamesearch/:game", function(request, response){
     });
 });
 
+router.post("/message/:id", function(request, response){
+    let id = request.params.id
+    user.allBy( "id", id, function(data) {
+        // console.log("Post Result:" , data);
+        let email = data[0].email;
+        mail.mailtouser(email)
+        response.render("search")
+    })    
+});
+
 // this route gets activated when the submit button gets clicked.
 // this submit button is found in form for creating a new user
 router.post("/create-user", function(request, response){
@@ -171,6 +185,28 @@ router.post("/create-user", function(request, response){
      function(data) {
         console.log(data);
     });
+});
+
+router.get("/create-game/:name/:id", function(request, response){
+    console.log(request.params.name);
+    console.log(request.params.id);
+
+    var gameTitle = request.params.name;
+    var gameId = request.params.id;
+
+    game.allBy("id", gameId, function(data){
+        if (data.length < 1){
+        console.log("No matching games, Making creating that game to the database");
+        game.create(["id", "name"], [gameId, gameTitle], function(data){
+                console.log(data);
+                response.render("gamesearch");
+         });
+        } else {
+            console.log("Game is already in the database", data);
+            response.render("gamesearch");
+        }
+    });
+
 });
 
 // Export routes for server.js to use.
