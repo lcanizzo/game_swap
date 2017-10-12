@@ -49,10 +49,16 @@ router.get("/search/:locationID", function(request, response){
 
 //Profile Page
 router.get("/username/:id", function(request, response){
+    // console.log(request.params.id);
+    console.log(request.params.id);
+    user.allBy("id",request.params.id, function(data){
+        console.log(data);
+    })
     //render to profile handlebar
     response.render("user-page")
     console.log("Working Profile")
 })
+
 
 //Add Game Page
 router.get("/add/:username/:id", function(request, response){
@@ -64,11 +70,12 @@ router.get("/add/:username/:id", function(request, response){
 //Post game search
 //*****************************************NEEDS TO BE TESTED TO MAKE SURE CALLING CORRECTLY*************************/
 
-router.get("/gamesearch", function(request, response){
-response.render("gamesearch")
+router.get("/:id/gamesearch", function(request, response){
+    console.log(request);
+    response.render("gamesearch");
 })
 
-router.post("/gamesearch", function(request, response){
+router.post("/:id/gamesearch", function(request, response){
     // console.log("Looking for games");
     // var string = request.params.string
     // gameSearch.search(string, function (data) {
