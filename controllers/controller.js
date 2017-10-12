@@ -63,24 +63,6 @@ router.get("/username/:id", function(request, response){
     console.log("Working Profile");
 });
 
-<<<<<<< HEAD
-//Library Page
-router.get("/library/:id", function(request, response){
-    // console.log(request.params.id);
-    console.log(request.params.id);
-    user.allBy("id",request.params.id, function(data){
-        console.log(data);
-        var hbsObject = {
-            name : data.name
-        }
-        //render to profile handlebar
-        response.render("user-page", hbsObject);
-    });
-    console.log("Working Profile");
-});
-
-=======
->>>>>>> 1400506c0d72e05171beb0611c7b78cc2378ec2c
 //Add Game Page
 router.get("/add/:username/:id", function(request, response){
     //render to add game handlebar
