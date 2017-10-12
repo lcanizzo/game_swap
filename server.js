@@ -6,6 +6,7 @@ const exphbrs = require('express-handlebars');
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const session = require("express-session");
+const user = require('./models/user.js');
 
 // Setup App
 // =========================================
@@ -28,13 +29,26 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://localhost:3000/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate( function(err, user) {
-      if (err) { return done(err); }
-      console.log('Deserialize user called.');
-      return done(null, { firstName: 'Foo', lastName: 'Bar' });
+      console.log("Looking for profile id: " + profile.id);
+      console.log("Profile: " + JSON.stringify(profile, null, 2));
+    user.findOne(profile.id, function(user){
+        if (!user){
+            console.log("No User Found");
+        }
+        else
+        {
+            console.log("Found User: ", user);
+            return done(user);
+        }
     });
-    console.log('Deserialize user called.');    
-    return done(null, { firstName: 'Foo', lastName: 'Bar' });
+
+    // User.findOrCreate( function(err, user) {
+    //   if (err) { return done(err); }
+    //   console.log('Deserialize user called.');
+    //   return done(null, { firstName: 'Foo', lastName: 'Bar' });
+    // });
+    // console.log('Deserialize user called.');    
+    // return done(null, { firstName: 'Foo', lastName: 'Bar' });
   }
 ));
 
@@ -62,6 +76,5 @@ app.use("/", authRoutes);
 // Listen
 // ======================================
 app.listen(PORT, function(){
-    console.log(PORT);
     console.log("Listening on Port: " + PORT)
 });

@@ -22,6 +22,17 @@ var orm ={
             cb(result);
         });
     },
+    oneBy: function (table, cond, val, cb){
+        var condition = cond;
+        var queryString = "SELECT FROM " + table + " WHERE " + condition + " = ? ;";
+
+        console.log("ORM Searching for: " + queryString);
+
+        connection.query(queryString, val, function (err, result) {
+            console.log("ORM Result", result);
+            cb(result);
+        });
+    },
     /** Search based on a single condition
     * @param {string} table - Target table of the new entry.
     * @param {string} cond - Column Name of condition where results are looked for.
