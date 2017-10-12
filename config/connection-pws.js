@@ -1,3 +1,3 @@
-const localpw = "";
+const localpw = "root";
 
 module.exports = localpw;

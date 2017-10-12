@@ -20,7 +20,7 @@
                 {{#each games}}
                     <div class="col games-cols">
                         <div class="card w-75 games-result-card">
-                            <form method="get" action="/create-game">
+                            <form method="get" action="/create-game/{{name}}/{{id}}">
                             <div class="card-body">
                                 <h3 class="card-title" name="name">{{name}}</h3>
                                 <img name="game-image" src={{image}}>
@@ -35,7 +35,7 @@
     </div>
 
 </div>
-
+{{!-- 
 <script>
 
     $(document).ready( function(){
@@ -46,7 +46,7 @@
             //$.ajax({
         })
     })
-    </script>
+    </script> --}}
 
     
     
