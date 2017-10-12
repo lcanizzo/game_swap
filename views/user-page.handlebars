@@ -25,7 +25,10 @@
                                 <h4 class="card-title">{{name}}'s Info</h4>
                                 <p class="card-text">Last active on: {{last_active}}</p>
                                 <form>
-                                    <button  class="btn btn-warning" type="submit">Send a trade request!</button>
+                                    <button class="btn btn-warning" type="submit">Send a trade request!</button>
+                                </form>
+                                <form method="GET" action="/gamesearch">
+                                    <button class="btn btn-warning" type="submit">Add a Game!</button>
                                 </form>
                             </div>
                             <div class="col">
@@ -39,7 +42,3 @@
         </div>
     </div>
 </div>
-
-<form method="GET" action="/gamesearch">
-    <button class="btn btn-warning" type="submit">Add a Game!</button>
-</form>
