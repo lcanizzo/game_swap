@@ -20,7 +20,7 @@ var user = {
        });
     },
     findByFacebook: function(facebookID, cb){
-        orm.oneBy("users", `facebook_id`, facebookID, function(res){
+        orm.allBy("users", `facebook_id`, facebookID, function(res){
             console.log("User Values: ", facebookID);
             cb(res);
         });

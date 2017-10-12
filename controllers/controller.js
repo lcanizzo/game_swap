@@ -70,6 +70,12 @@ router.get("/add/:username/:id", function(request, response){
     console.log("Working Add Game")
 })
 
+// User Library
+router.get("/library/:id?", function(request, response){
+    //render to library handlebar
+    response.render("user-library");
+});
+
 //Post game search
 //*****************************************NEEDS TO BE TESTED TO MAKE SURE CALLING CORRECTLY*************************/
 
