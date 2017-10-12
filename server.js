@@ -1,4 +1,4 @@
-// Dependencies
+``// Dependencies
 // =========================================
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -38,17 +38,9 @@ passport.use(new FacebookStrategy({
         else
         {
             console.log("Found User: ", user);
-            return done(user);
+            return done(null, user);
         }
     });
-
-    // User.findOrCreate( function(err, user) {
-    //   if (err) { return done(err); }
-    //   console.log('Deserialize user called.');
-    //   return done(null, { firstName: 'Foo', lastName: 'Bar' });
-    // });
-    // console.log('Deserialize user called.');    
-    // return done(null, { firstName: 'Foo', lastName: 'Bar' });
   }
 ));
 

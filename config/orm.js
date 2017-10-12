@@ -24,11 +24,11 @@ var orm ={
     },
     oneBy: function (table, cond, val, cb){
         var condition = cond;
-        var queryString = "SELECT FROM " + table + " WHERE " + condition + " = ? ;";
+        var queryString = "SELECT * FROM " + table + " WHERE `" + condition + "` = " + val + ";";
 
         console.log("ORM Searching for: " + queryString);
 
-        connection.query(queryString, val, function (err, result) {
+        connection.query(queryString, function (err, result) {
             console.log("ORM Result", result);
             cb(result);
         });
