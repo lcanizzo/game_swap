@@ -26,7 +26,7 @@ passport.deserializeUser(function (user, done) {
 passport.use(new FacebookStrategy({
     clientID: 209804176226433,
     clientSecret: "c4f0e33d82134262ac76e68dcf875359",
-    callbackURL: "https://sleepy-oasis-78182.herokuapp.com/auth/facebook/callback"
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
 },
     function (accessToken, refreshToken, profile, done) {
         console.log("Looking for profile: " + JSON.stringify(profile, null, 2));

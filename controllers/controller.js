@@ -63,6 +63,20 @@ router.get("/username/:id", function(request, response){
     console.log("Working Profile");
 });
 
+//user
+router.get("/username", function(request, response){
+    let userID = request.session.passport.user[0].id;
+    user.allBy("id", userID, function(data){
+        console.log(data);
+
+        var hbsObject = {
+            users_id : data
+        }
+        //render to profile handlebar
+        response.render("user-page", hbsObject);
+    });
+});
+
 //Add Game Page
 router.get("/add/:username/:id", function(request, response){
     //render to add game handlebar
