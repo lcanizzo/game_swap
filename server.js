@@ -28,11 +28,11 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://localhost:3000/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    // User.findOrCreate( function(err, user) {
-    //   if (err) { return done(err); }
-    //   console.log('Deserialize user called.');
-    //   return done(null, { firstName: 'Foo', lastName: 'Bar' });
-    // });
+    User.findOrCreate( function(err, user) {
+      if (err) { return done(err); }
+      console.log('Deserialize user called.');
+      return done(null, { firstName: 'Foo', lastName: 'Bar' });
+    });
     console.log('Deserialize user called.');    
     return done(null, { firstName: 'Foo', lastName: 'Bar' });
   }
@@ -46,7 +46,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.engine("handlebars", exphbrs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-app.use(session({ secret: "cats" }));
+// app.use(session({ secret: "cats" }));
 app.use(passport.initialize());
 app.use(passport.session());
 
