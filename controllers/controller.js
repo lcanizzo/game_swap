@@ -63,20 +63,31 @@ router.get("/add/:username/:id", function(request, response){
 
 //Post game search
 //*****************************************NEEDS TO BE TESTED TO MAKE SURE CALLING CORRECTLY*************************/
-router.post("/gamesearch/:string", function(request, response){
+
+router.get("/gamesearch", function(request, response){
+response.render("gamesearch")
+})
+
+router.post("/gamesearch", function(request, response){
     // console.log("Looking for games");
     // var string = request.params.string
     // gameSearch.search(string, function (data) {
     //     console.log (data);
     // });
     
-    var game = request.body.game
+    let game = request.body.game
+    console.log('game string:\,', game);
+    response.redirect("/gamesearch/"+game)
+    response.end();
+})
 
+router.get("/gamesearch/:game", function(request, response){    
     function gameBuilder(name, image) {
         this.name = name;
         this.image = image;
+        // this.id = id;
     }
-
+    let game = request.params.game;
     var gameResults = [];
     
     //console.log(game)
@@ -102,21 +113,18 @@ router.post("/gamesearch/:string", function(request, response){
                 image = "//publications.iarc.fr/uploads/media/default/0001/02/thumb_1199_default_publication.jpeg"
             }
             //console.log("Image link", image)
-            var newGame = new gameBuilder(data.body[i].name, image)
+            var newGame = new gameBuilder(data.body[i].name, image, data.body[i].id)
             // console.log("New Game: ", newGame)
-            console.log("Array: ", gameResults)            
-            //console.log(image)
-
             gameResults.push(newGame)
+            console.log("Array: ", gameResults)   
+        };         
             // console.log(image)
                 var hbsObject = {
                     games: gameResults
                 };
-            response.render("index", hbsObject);
-        };
+        response.render("gamesearch", hbsObject);        
     });
-})
-
+});
 
 // this route gets activated when the submit button gets clicked.
 // this submit button is found in form for creating a new user

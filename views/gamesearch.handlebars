@@ -1,1 +1,38 @@
 <!--game search handlebars-->
+
+<div class="container justify-content-center">
+
+    <form class="mt-4 search-box" method="post" action="/gamesearch">
+        <div class="form-row align-items-center">
+            <div class="col-8">
+                <input class="form-control form-control-lg" type="text" name="game" placeholder="Search for a game">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-warning">Submit</button>
+            </div>
+        </div>
+    </form>
+
+     <div class="content-box jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-3 user-header">Game Results</h1>
+            <div id="game-results">
+                {{#each games}}
+                    <div class="col games-cols">
+                        <div class="card w-75 games-result-card">
+                            <div class="card-body">
+                                <h3 class="card-title">{{name}}</h3>
+                                <img src={{image}}>
+                                <form method="post" action="/"><button type="submit" class="btn btn-warning">Add Game to Library</button></form>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    
+    

@@ -1,16 +1,36 @@
-<div class="container">
-    <div class="row">
-        <div class="card">
-            <h3 class="card-header">{{name}}</h3>
-            <div class="card-body row">
-                <div class="col">
-                    <h4 class="card-title">Special title treatment</h4>
-                    <p class="card-text">Last active on: {{last_active}}</p>
+<div class="container justify-content-center">
+
+    <div class="content-box jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col profile-tabs">
+                    <div class="card profile-links-card">
+                        <button class="card-link-div btn btn-warning">
+                            Profile
+                        </button>
+                        <button class="card-link-div btn btn-warning">
+                            Library
+                        </button>
+                        <button class="card-link-div btn btn-warning">
+                            Wish List
+                        </button>
+                    </div>
                 </div>
-                <div class="col">
-                    <img class="card-img-top" src="{{image}}" alt="user image">                
+                <div class="col-8">
+                    <div class="card profile-card">
+                        <h3 class="card-header">Francisco's The Best{{name}}</h3>
+                        <div class="card-body row">
+                            <div class="col">
+                                <h4 class="card-title">He does all the good things</h4>
+                                <p class="card-text">Last active on: Your mom{{last_active}}</p>
+                            </div>
+                            <div class="col">
+                                <img class="card-img-top" src="https://avatars0.githubusercontent.com/u/8119401?v=4&s=400{{image}}" alt="user image">                
+                            </div>
+                        </div>
+                    </div>  
                 </div>
             </div>
-        </div>  
+        </div>
     </div>
 </div>
