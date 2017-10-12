@@ -13,18 +13,18 @@ If you answered yes to all the questions above as we did, Game Swap is for you!
 Game Swap is a social game trading application that allows users to trade video games with other users in their local area.
 
 
-#Technologies
+# Technologies
 
 This application was built using:
 
-IGDB NPM
-Nodemailer NPM
-SQL
-Facebook OAUTH
-Express
-Boostrap v4
-Handlebars
-HTML5
-CSS
+- IGDB NPM
+- Nodemailer NPM
+- SQL
+- Facebook OAUTH
+- Express
+- Bootstrap v4
+- Handlebars
+- HTML5
+- CSS
 
 
