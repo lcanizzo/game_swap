@@ -53,10 +53,14 @@ router.get("/username/:id", function(request, response){
     console.log(request.params.id);
     user.allBy("id",request.params.id, function(data){
         console.log(data);
-    })
-    //render to profile handlebar
-    response.render("user-page")
-    console.log("Working Profile")
+
+        var hbsObject = {
+            users_id : data
+        }
+        //render to profile handlebar
+        response.render("user-page", hbsObject);
+    });
+    console.log("Working Profile");
 })
 
 

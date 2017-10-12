@@ -17,12 +17,13 @@
                     </div>
                 </div>
                 <div class="col-8">
+                    {{#each users_id}}
                     <div class="card profile-card">
-                        <h3 class="card-header">Francisco's The Best{{name}}</h3>
+                        <h3 class="card-header">{{name}}</h3>
                         <div class="card-body row">
                             <div class="col">
-                                <h4 class="card-title">He does all the good things</h4>
-                                <p class="card-text">Last active on: Your mom{{last_active}}</p>
+                                <h4 class="card-title">{{name}}'s Info</h4>
+                                <p class="card-text">Last active on: {{last_active}}</p>
                                 <form>
                                     <button  class="btn btn-warning" type="submit">Send a trade request!</button>
                                 </form>
@@ -32,6 +33,7 @@
                             </div>
                         </div>
                     </div>  
+                    {{/each}}
                 </div>
             </div>
         </div>
@@ -39,5 +41,5 @@
 </div>
 
 <form method="GET" action="/gamesearch">
-    <button type="submit">Add a Game!</button>
+    <button class="btn btn-warning" type="submit">Add a Game!</button>
 </form>
