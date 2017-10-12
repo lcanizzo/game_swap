@@ -3,9 +3,9 @@ var nodemailer = require("nodemailer")
 
 $(document).ready(function() {
     
-    $("#mailButton").on("click", function (){
-        mail.mailtouser()
-        })
+    // $("#mailButton").on("click", function (){
+    //     mail.mailtouser()
+    //     })
     
     //console.log( "JS Linked" );
 
