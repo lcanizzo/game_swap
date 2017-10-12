@@ -61,7 +61,7 @@ router.get("/username/:id", function(request, response){
         response.render("user-page", hbsObject);
     });
     console.log("Working Profile");
-})
+});
 
 //Add Game Page
 router.get("/add/:username/:id", function(request, response){
@@ -73,12 +73,12 @@ router.get("/add/:username/:id", function(request, response){
 //Post game search
 //*****************************************NEEDS TO BE TESTED TO MAKE SURE CALLING CORRECTLY*************************/
 
-router.get("/:id/gamesearch", function(request, response){
+router.get("/gamesearch", function(request, response){
     console.log(request);
     response.render("gamesearch");
 })
 
-router.post("/:id/gamesearch", function(request, response){
+router.post("/gamesearch", function(request, response){
     // console.log("Looking for games");
     // var string = request.params.string
     // gameSearch.search(string, function (data) {
