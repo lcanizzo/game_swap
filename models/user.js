@@ -19,6 +19,12 @@ var user = {
            cb(res);
        });
     },
+    update: function(cond, vals, cb){
+        // update a user col
+       orm.update("users", cond, vals, function(res){
+           cb(res);
+       });
+    },
     findByFacebook: function(facebookID, cb){
         orm.allBy("users", "facebook_id", facebookID, function(res){
             console.log("User Values: ", facebookID);
