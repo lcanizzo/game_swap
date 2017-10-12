@@ -62,5 +62,6 @@ app.use("/", authRoutes);
 // Listen
 // ======================================
 app.listen(PORT, function(){
+    console.log(PORT);
     console.log("Listening on Port: " + PORT)
 });
