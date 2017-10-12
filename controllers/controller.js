@@ -99,14 +99,21 @@ router.get("/add/:username/:id", function(request, response){
 // User Library
 router.get("/library/:id?", function(request, response){
     //render to library handlebar
-    user.allBy("id",request.params.id, function(data){
+    // let userID = currentuserID.currentID;
+    console.log("You are in the library page")
+
+    user.allBy("id", request.params.id, function(data){
         console.log(data);
+        console.log(request.params.id)
+        user.gameList("user_id", request.params.id, function(data){
+            console.log(data);
+        });
 
         let hbsObject = {
             users_id : data            
         }
         //render to profile handlebar
-        response.render("user-library",hbsObject);
+        response.render("user-library", hbsObject);
     });
 });
 

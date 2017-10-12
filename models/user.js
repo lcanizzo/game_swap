@@ -24,6 +24,11 @@ var user = {
             console.log("User Values: ", facebookID);
             cb(res);
         });
+    },
+    gameList: function(cols, vals, cb){
+        orm.allBy("gamesToUsers", cols, vals, function(res){
+            cb(res);
+        })
     }
 };
 
