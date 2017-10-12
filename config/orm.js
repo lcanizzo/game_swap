@@ -33,7 +33,7 @@ var orm ={
         var queryString = "SELECT * FROM " + table + " WHERE " + condition + " = ? ;";
 
         console.log("ORM Searching for: " + queryString);
-
+ 
         connection.query(queryString, val, function (err, result) {
             console.log("ORM Result", result);
             cb(result);
