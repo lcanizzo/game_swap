@@ -81,11 +81,6 @@ router.post("/gamesearch", function(request, response){
     response.end();
 })
 
-router.get("/gamesearch", function(request, response){
-    //render to gamesearch handlebar
-    response.render("gamesearch")
-})
-
 router.get("/gamesearch/:game", function(request, response){    
     function gameBuilder(name, image) {
         this.name = name;
