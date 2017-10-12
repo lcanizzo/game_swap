@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `gameswap_db`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `email` VARCHAR(55),
-  `facebook.id` BIGINT(20) NOT NULL,
+  `facebook_id` BIGINT(20) NOT NULL,
   `is_verified` BOOLEAN DEFAULT false,
   `last_active` DATE,
   `password` VARCHAR(35),

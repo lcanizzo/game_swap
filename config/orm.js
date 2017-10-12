@@ -61,6 +61,10 @@ var orm ={
         var values = printQuestionMarks(vals.length);
         var queryString = "INSERT INTO " + table + "(" + columns + ")" 
             + " VALUES ( " + values + " ) ;";
+        
+        console.log("ORM Creating new entry", queryString);
+        console.log("ORM Creating Values", vals);
+
         connection.query(queryString, vals, function (err, results) {
             cb(results);
         });
