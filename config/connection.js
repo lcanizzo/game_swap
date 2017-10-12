@@ -1,5 +1,6 @@
 // Set up MySQL connection.
 const mysql = require("mysql");
+const localpw = require("./connection-pws.js");
 var connection;
 
 if (process.env.JAWSDB_URL) {
@@ -9,7 +10,7 @@ if (process.env.JAWSDB_URL) {
         port: 3306,
         host: "localhost",
         user: "root",
-        password: "",
+        password: localpw,
         database: "gameswap_db"
     });
 }
