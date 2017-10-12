@@ -1,0 +1,40 @@
+<div class="container justify-content-center">
+
+    <div class="content-box jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col profile-tabs">
+                    <div class="card profile-links-card">
+                        <button class="card-link-div btn btn-warning">
+                            Profile
+                        </button>
+                        <button class="card-link-div btn btn-warning">
+                            Library
+                        </button>
+                        <button class="card-link-div btn btn-warning">
+                            Wish List
+                        </button>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="card profile-card">
+                        <h3 class="card-header">{{name}}'s Games</h3>
+                        <div class="card-body container">
+                            {{#each games}}
+                                <div class="col games-cols">
+                                    <div class="card w-75 games-result-card">
+                                        <div class="card-body">
+                                            <h3 class="card-title">{{name}}</h3>
+                                            <img src={{image}}>
+                                            <form method="post" action="/"><button type="submit" class="btn btn-warning">Add Game to Library</button></form>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
