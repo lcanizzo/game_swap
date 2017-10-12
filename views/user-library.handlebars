@@ -17,29 +17,24 @@
                     </div>
                 </div>
                 <div class="col-8">
-                    {{#each users_id}}
                     <div class="card profile-card">
-                        <h3 class="card-header">{{name}}</h3>
-                        <div class="card-body row">
-                            <div class="col">
-                                <h4 class="card-title">{{name}}'s Info</h4>
-                                <p class="card-text">Last active on: {{last_active}}</p>
-                                <form>
-                                    <button  class="btn btn-warning" type="submit">Send a trade request!</button>
-                                </form>
-                            </div>
-                            <div class="col">
-                                <img class="card-img-top" src="https://avatars0.githubusercontent.com/u/8119401?v=4&s=400{{image}}" alt="user image">                
-                            </div>
+                        <h3 class="card-header">{{name}}'s Games</h3>
+                        <div class="card-body container">
+                            {{#each games}}
+                                <div class="col games-cols">
+                                    <div class="card w-75 games-result-card">
+                                        <div class="card-body">
+                                            <h3 class="card-title">{{name}}</h3>
+                                            <img src={{image}}>
+                                            <form method="post" action="/"><button type="submit" class="btn btn-warning">Add Game to Library</button></form>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/each}}
                         </div>
                     </div>  
-                    {{/each}}
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<form method="GET" action="/gamesearch">
-    <button class="btn btn-warning" type="submit">Add a Game!</button>
-</form>

@@ -24,4 +24,4 @@ VALUES
         -- ("Emily", "emilyexample@hotmail.com", 0, 1,'1999-04-04', "password"),
         -- ("Bob", "bobexample@hotmail.com", 0, 3,'1999-04-04', "password"),
         -- ("Bryan", "test@gmail.com", 0, 1,'1999-04-04', "password"), 
-        -- ("Wybo", "test@gmail.com", 0, 1,'1999-04-04', "password"), 
+        

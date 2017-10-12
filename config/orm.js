@@ -64,6 +64,7 @@ var orm ={
         
         console.log("ORM Creating new entry", queryString);
         console.log("ORM Creating Values", vals);
+
         connection.query(queryString, vals, function (err, results) {
             cb(results);
         });

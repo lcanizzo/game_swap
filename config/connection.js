@@ -12,6 +12,7 @@ if (process.env.JAWSDB_URL) {
         user: "root",
         password: localpw,
         database: "gameswap_db"
+        // localpw
     });
 }
 

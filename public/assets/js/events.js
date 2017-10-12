@@ -1,6 +1,10 @@
-$( document ).ready(function() {
+$(document).ready(function() {
     
-    console.log( "JS Linked" );
+    $("#mailButton").on("click", function (){
+        
+            })
+    
+    //console.log( "JS Linked" );
 
     // $('#search-btn').on("click", function (e) {
     //     console.log("Searching");
