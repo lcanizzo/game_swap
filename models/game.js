@@ -17,6 +17,11 @@ var game = {
            cb(res);
        });
     },
+    addtoUsers: function(cols, vals, cb){
+        orm.create("gamesToUsers", cols, vals, function(res){
+            cb(res);
+        });
+    },
 }
 
 module.exports = game;
