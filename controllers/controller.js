@@ -114,10 +114,10 @@ router.post("/gamesearch", function(request, response){
 })
 
 router.get("/gamesearch/:game", function(request, response){    
-    function gameBuilder(name, image) {
+    function gameBuilder(name, image, id) {
         this.name = name;
         this.image = image;
-        // this.id = id;
+        this.id = id;
     }
     let game = request.params.game;
     var gameResults = [];
@@ -179,6 +179,28 @@ router.post("/create-user", function(request, response){
      function(data) {
         console.log(data);
     });
+});
+
+router.get("/create-game/:name/:id", function(request, response){
+    console.log(request.params.name);
+    console.log(request.params.id);
+
+    var gameTitle = request.params.name;
+    var gameId = request.params.id;
+
+    game.allBy("id", gameId, function(data){
+        if (data.length < 1){
+        console.log("No matching games, Making creating that game to the database");
+        game.create(["id", "name"], [gameId, gameTitle], function(data){
+                console.log(data);
+                response.render("gamesearch");
+         });
+        } else {
+            console.log("Game is already in the database", data);
+            response.render("gamesearch");
+        }
+    });
+
 });
 
 // Export routes for server.js to use.
