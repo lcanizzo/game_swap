@@ -57,7 +57,23 @@ var orm ={
         connection.query(queryString, vals, function (err, results) {
             cb(results);
         });
-    }
+    },
+
+    UPDATE table_name
+    SET column1 = value1, column2 = value2, ...
+    WHERE condition;
+
+    update: function (table, cond, val, cb) {
+        var condition = cond;
+        var queryString = "UPDATE * FROM " + table + " WHERE " + condition + " = ? ;";
+
+        console.log("ORM Searching for: " + queryString);
+ 
+        connection.query(queryString, val, function (err, result) {
+            console.log("ORM Result", result);
+            cb(result);
+        });
+    },
 }
 // Object for all our SQL statement functions. 
 
