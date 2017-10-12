@@ -4,17 +4,18 @@
 var nodemailer = require("nodemailer")
 
 //variable for nodemailer request and autentication to smtp
-let transporter =
-nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587, //port 587 TLS
-    secure: false,
-    auth: { 
-        //user name gameswapu@gmail.com pass: ucfproject2
-        user: "gameswapu",
-        pass: "ucfproject2",
-    }
-});
+var mail = {
+    mailtouser: function mailToUser () {
+                let transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 587, //port 587 TLS
+                secure: false,
+                auth: { 
+                //user name gameswapu@gmail.com pass: ucfproject2
+                user: "gameswapu",
+                pass: "ucfproject2",
+                }
+    });
 
 //variable for email message to send to user
 let mailOptions = {
@@ -36,3 +37,6 @@ transporter.sendMail(mailOptions, (error, info) => {
     }
     console.log('Message sent: %s', info.messageId);
 })
+    
+    }
+}
