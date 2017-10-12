@@ -61,8 +61,22 @@ router.get("/username/:id", function(request, response){
         response.render("user-page", hbsObject);
     });
     console.log("Working Profile");
-})
+});
 
+//Library Page
+router.get("/library/:id", function(request, response){
+    // console.log(request.params.id);
+    console.log(request.params.id);
+    user.allBy("id",request.params.id, function(data){
+        console.log(data);
+        var hbsObject = {
+            name : data.name
+        }
+        //render to profile handlebar
+        response.render("user-page", hbsObject);
+    });
+    console.log("Working Profile");
+});
 
 //Add Game Page
 router.get("/add/:username/:id", function(request, response){
