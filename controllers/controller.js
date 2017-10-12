@@ -63,7 +63,6 @@ router.get("/username/:id", function(request, response){
     console.log("Working Profile");
 })
 
-
 //Add Game Page
 router.get("/add/:username/:id", function(request, response){
     //render to add game handlebar
