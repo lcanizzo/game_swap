@@ -4,7 +4,8 @@ const igdb = require('igdb-api-node').default;
 //set api key to variable 
 const client = igdb('be1ea7dccb14bcf3ae57b1e16d62cb74');
 
-
+var mail = require("../config/mail.js")
+var nodemailer = require("nodemailer")
 // Import express package
 var express = require("express")
 //Importing apiSearch.js
@@ -31,7 +32,6 @@ router.get("/search", function(request, response){
 
 router.post("/search", function(request, response){
     var locationID = request.body.location;
-    var userID = request.session.user.id;
 
     response.redirect("/search/"+locationID);
 });
@@ -156,6 +156,16 @@ router.get("/gamesearch/:game", function(request, response){
                 };
         response.render("gamesearch", hbsObject);        
     });
+});
+
+router.post("/message/:id", function(request, response){
+    let id = request.params.id
+    user.allBy( "id", id, function(data) {
+        // console.log("Post Result:" , data);
+        let email = data[0].email;
+        mail.mailtouser(email)
+        response.render("search")
+    })    
 });
 
 // this route gets activated when the submit button gets clicked.
