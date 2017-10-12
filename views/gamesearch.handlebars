@@ -1,17 +1,38 @@
 <!--game search handlebars-->
- <form method="post" action="/gamesearch">
-    <input type="text" name="game" placeholder="Search for a game">
-    <button type="submit">Submit</button>
-</form>
-    <ul>
-        {{#each games}}
-            <div class="container" style="background-color: white">
-                {{!-- <h1>Hello</h1> --}}
-                <h3>{{name}}</h3>
-                <img src={{image}}>
-                <form method="post" action="/"><button type ="submit">Add Game to Library</button></form>
+
+<div class="container justify-content-center">
+
+    <form class="mt-4 search-box" method="post" action="/gamesearch">
+        <div class="form-row align-items-center">
+            <div class="col-8">
+                <input class="form-control form-control-lg" type="text" name="game" placeholder="Search for a game">
             </div>
-        {{/each}}
-    </ul>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-warning">Submit</button>
+            </div>
+        </div>
+    </form>
+
+     <div class="content-box jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-3 user-header">Game Results</h1>
+            <div id="game-results">
+                {{#each games}}
+                    <div class="col games-cols">
+                        <div class="card w-75 games-result-card">
+                            <div class="card-body">
+                                <h3 class="card-title">{{name}}</h3>
+                                <img src={{image}}>
+                                <form method="post" action="/"><button type="submit" class="btn btn-warning">Add Game to Library</button></form>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+</div>
+
     
     
