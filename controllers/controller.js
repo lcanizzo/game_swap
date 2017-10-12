@@ -103,28 +103,27 @@ router.get("/library/:id?", function(request, response){
     console.log("You are in the library page")
 
     user.allBy("id", request.params.id, function(data){
-        console.log(data);
-        console.log(request.params.id)
+        // console.log(data);
+        // console.log(request.params.id)
 
        let userID= request.params.id
         let userGames =[]
         user.gameList("users_id", userID, function(data){
-            for(let i=0; i <data.length; i++){
+            for(let i=0; i < data.length; i++){
                 // userGames.push(data[i].games_id)
                 // console.log(userGames);
-                game.allBy("id", data[i].games_id, function(game){
-                    console.log("Results: " + game)
-                    // userGames.push(game[i][0].name);
-                    // console.log("User Library R E S U L T S:\n",userGames)
 
-                    
+                game.allBy("id", data[i].games_id, function(game){
+                   for(i = 0; i < game.length; i ++){
+                       console.log("Game Name: " + game[i].name);
+                   }
                 });
             }
         });
 
         let hbsObject = {
             users_id : data,
-            games: userGames
+            // games: userGames
         }
         //render to profile handlebar
         response.render("user-library", hbsObject);
