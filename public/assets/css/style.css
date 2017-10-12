@@ -61,6 +61,7 @@ nav {
 }
 
 .card-link-div{
+    width: 100%;
     color: floralwhite;
     text-align: center;
     min-height: 30%;
