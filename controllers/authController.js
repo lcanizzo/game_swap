@@ -18,7 +18,9 @@ router.get('/auth/facebook', passport.authenticate('facebook'));
 router.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/login' }),
     function (req, res) {
-        res.redirect('/search');
+        console.log("Auth user", req.user);
+        var user = {user: req.user};
+        res.redirect('/search', user);
 });
 
 
