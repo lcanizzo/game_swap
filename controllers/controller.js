@@ -40,7 +40,7 @@ router.get("/search", function(request, response){
 
 router.post("/search", function(request, response){
     var locationID = request.body.location;
-    // userID = currentuserID.currentID;
+    //let userID = currentuserID.currentID;
 
     response.redirect("/search/"+locationID);
 });

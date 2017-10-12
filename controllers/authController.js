@@ -24,6 +24,7 @@ router.get('/auth/facebook/callback',
         var string = encodeURIComponent(req.user[0].id);
         currentuserID.currentID = req.session.passport.user[0].id;
         console.log("Session User ID", currentuserID.currentID);
+
         res.redirect('/search?'+ req.user[0].id);
 });
 
