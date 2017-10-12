@@ -17,7 +17,7 @@ VALUES ("Rollins College", "Orlando", "FL", 32789);
 INSERT INTO `gameswap_db`. `users`(`name`, `email`, `is_verified`, `locations_id`,`last_active`, `password`, `facebook.id`)
 VALUES  
         ("Francisco", "test@gmail.com", 0, 2,'1999-04-04', "password", 10101639790623289),
-        ("Wybo", "test@gmail.com", 0, 1,'1999-04-04', "password", 10155762906027812),
+        ("Wybo", "andrewwybo@gmail.com", 0, 1,'1999-04-04', "password", 10155762906027812),
         ("Luca Canizzo", "test@gmail.com", 0, 1,'1999-04-04', "password", 1617611878303022); 
         -- ("Bryan", "bryanporras2033@gmail.com", 1, 1,'1999-04-04', "password"),
         -- ("John", "johnexample@hotmail.com", 1, 1,'1999-04-04', "password"),
