@@ -5,12 +5,17 @@
             <div class="row justify-content-between">
                 <div class="col profile-tabs">
                     <div class="card profile-links-card">
+                       {{#each users_id}}
+                        <form method="GET" action="/username/{{id}}">
                         <button class="card-link-div btn btn-warning">
                             Profile
                         </button>
+                        </form>
+                        <form method="GET" action="/library/{{id}}">
                         <button class="card-link-div btn btn-warning">
                             Library
                         </button>
+                        </form>
                         <button class="card-link-div btn btn-warning">
                             Wish List
                         </button>
@@ -19,6 +24,7 @@
                 <div class="col-8">
                     <div class="card profile-card">
                         <h3 class="card-header">{{name}}'s Games</h3>
+                        {{/each}}
                         <div class="card-body container">
                             {{#each games}}
                                 <div class="col games-cols">
