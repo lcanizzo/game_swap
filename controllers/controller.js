@@ -31,6 +31,8 @@ router.get("/search", function(request, response){
 
 router.post("/search", function(request, response){
     var locationID = request.body.location;
+    var userID = request.session.user.id;
+
     response.redirect("/search/"+locationID);
 });
 
@@ -61,6 +63,20 @@ router.get("/username/:id", function(request, response){
         response.render("user-page", hbsObject);
     });
     console.log("Working Profile");
+});
+
+//user
+router.get("/username", function(request, response){
+    let userID = request.session.passport.user[0].id;
+    user.allBy("id", userID, function(data){
+        console.log(data);
+
+        var hbsObject = {
+            users_id : data
+        }
+        //render to profile handlebar
+        response.render("user-page", hbsObject);
+    });
 });
 
 //Add Game Page
