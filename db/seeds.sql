@@ -18,7 +18,9 @@ DELETE FROM `gameswap_db`. `users`;
 
 INSERT INTO `gameswap_db`. `users`(`name`, `email`, `is_verified`, `locations_id`,`last_active`, `password`, `facebook_id`)
 VALUES  
-        ("Luca Canizzo", "test@gmail.com", 0, 1,'1999-04-04', "password", 1617611878303022); 
+        ("Luca Canizzo", "luca.canizzo@gmail.com", 0, 1,'1999-04-04', "password", 1617611878303022),
+        ("Wybo", "andrewwybo@gmail.com", 0, 1,'1999-04-04', "password", 10155762906027812),
+        ("Francisco", "franciscocarrer@gmail.com", 0, 2,'1999-04-04', "password", 10101639790623289);
         -- ("Bryan", "bryanporras2033@gmail.com", 1, 1,'1999-04-04', "password"),
         -- ("John", "johnexample@hotmail.com", 1, 1,'1999-04-04', "password"),
         -- ("Emily", "emilyexample@hotmail.com", 0, 1,'1999-04-04', "password"),
