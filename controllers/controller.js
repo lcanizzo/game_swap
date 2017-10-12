@@ -92,10 +92,10 @@ router.post("/gamesearch", function(request, response){
 })
 
 router.get("/gamesearch/:game", function(request, response){    
-    function gameBuilder(name, image) {
+    function gameBuilder(name, image, id) {
         this.name = name;
         this.image = image;
-        // this.id = id;
+        this.id = id;
     }
     let game = request.params.game;
     var gameResults = [];
@@ -147,6 +147,11 @@ router.post("/create-user", function(request, response){
      function(data) {
         console.log(data);
     });
+});
+
+router.get("/create-game", function(request, response){
+    // game.create("games",["id","name"], )
+   console.log(request.body);
 });
 
 // Export routes for server.js to use.
