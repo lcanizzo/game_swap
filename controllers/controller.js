@@ -116,7 +116,6 @@ router.get("/library/:id?", function(request, response){
             userInfo.name = name;
             userInfo.id = id;
             users_id.push(userInfo);
-            console.log("U S E R  I N F O:\n", users_id)
         });
 
         user.gameList("users_id", userID, function(data){
