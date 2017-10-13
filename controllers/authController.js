@@ -2,6 +2,7 @@
 const express = require("express")
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
+const currentuserID = require('../config/currentuser.js');
 
 // Establish router via express
 var router = express.Router();
@@ -18,7 +19,13 @@ router.get('/auth/facebook', passport.authenticate('facebook'));
 router.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/login' }),
     function (req, res) {
-        res.redirect('/search');
+        console.log("Auth user", req.user);
+        var user = {user: req.user[0]};
+        var string = encodeURIComponent(req.user[0].id);
+        currentuserID.currentID = req.session.passport.user[0].id;
+        console.log("Session User ID", currentuserID.currentID);
+
+        res.redirect('/search?'+ req.user[0].id);
 });
 
 

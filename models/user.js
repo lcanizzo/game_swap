@@ -13,16 +13,22 @@ var user = {
             cb(res);
         });
     },
-    create: function(vals,cols,val, cb){
+    create: function(cols, vals, cb){
         // creates a new user  
-       orm.create("users", cols, val, function(res){
+       orm.create("users", cols, vals, function(res){
            cb(res);
        });
     },
-    findOne: function(facebookID, cb){
-        orm.oneBy("users", `facebook.id`, facebookID, function(res){
+    findByFacebook: function(facebookID, cb){
+        orm.allBy("users", "facebook_id", facebookID, function(res){
+            console.log("User Values: ", facebookID);
             cb(res);
         });
+    },
+    gameList: function(cond, vals, cb){
+        orm.allBy("gamesToUsers", cond, vals, function(res){
+            cb(res);
+        })
     }
 };
 

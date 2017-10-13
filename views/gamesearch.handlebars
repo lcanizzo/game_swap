@@ -20,10 +20,12 @@
                 {{#each games}}
                     <div class="col games-cols">
                         <div class="card w-75 games-result-card">
+                            <form method="get" action="/create-game/{{name}}/{{id}}">
                             <div class="card-body">
-                                <h3 class="card-title">{{name}}</h3>
-                                <img src={{image}}>
-                                <form method="post" action="/"><button type="submit" class="btn btn-warning">Add Game to Library</button></form>
+                                <h3 class="card-title" name="name">{{name}}</h3>
+                                <img name="game-image" src={{image}}>
+                                <button type="submit" class="btn btn-warning" id="addGame">Add Game to Library</button>
+                            </form>
                             </div>
                         </div>
                     </div>
@@ -33,6 +35,18 @@
     </div>
 
 </div>
+{{!-- 
+<script>
+
+    $(document).ready( function(){
+
+        $('#addGame').on(click, function(){
+
+           console.log("hello")
+            //$.ajax({
+        })
+    })
+    </script> --}}
 
     
     

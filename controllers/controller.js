@@ -4,14 +4,23 @@ const igdb = require('igdb-api-node').default;
 //set api key to variable 
 const client = igdb('be1ea7dccb14bcf3ae57b1e16d62cb74');
 
+// Import current user id from session
+const currentuserID = require('../config/currentuser.js');
+
+//require mail.js
+var mail = require("../config/mail.js")
+
+//require node mailer
+var nodemailer = require("nodemailer")
 
 // Import express package
 var express = require("express")
+
 //Importing apiSearch.js
 var gameSearch = require("../models/search.js")
+
 // Establish router via express
 var router = express.Router();
-
 
 // Import the model to use its database functions.
 var user = require("../models/user.js");
@@ -31,6 +40,8 @@ router.get("/search", function(request, response){
 
 router.post("/search", function(request, response){
     var locationID = request.body.location;
+    //let userID = currentuserID.currentID;
+
     response.redirect("/search/"+locationID);
 });
 
@@ -49,10 +60,34 @@ router.get("/search/:locationID", function(request, response){
 
 //Profile Page
 router.get("/username/:id", function(request, response){
-    //render to profile handlebar
-    response.render("user-page")
-    console.log("Working Profile")
-})
+    // console.log(request.params.id);
+    console.log(request.params.id);
+    user.allBy("id",request.params.id, function(data){
+        console.log(data);
+
+        var hbsObject = {
+            users_id : data
+        }
+        //render to profile handlebar
+        response.render("user-page", hbsObject);
+    });
+    console.log("Working Profile");
+});
+
+//user
+router.get("/username", function(request, response){
+    let userID = currentuserID.currentID;
+    console.log("User ID in .GET:\n", userID);
+    user.allBy("id", userID, function(data){
+        console.log(data);
+
+        var hbsObject = {
+            users_id : data
+        }
+        //render to profile handlebar
+        response.render("user-page", hbsObject);
+    });
+});
 
 //Add Game Page
 router.get("/add/:username/:id", function(request, response){
@@ -61,11 +96,63 @@ router.get("/add/:username/:id", function(request, response){
     console.log("Working Add Game")
 })
 
+// User Library
+router.get("/library/:id?", function(request, response){
+    //render to library handlebar
+    // let userID = currentuserID.currentID;
+    console.log("You are in the library page")
+
+    user.allBy("id", request.params.id, function(data){
+
+        let userID= request.params.id;
+        let userGames =[];
+        let users_id = [];
+        // set up users_id object
+        user.allBy("id", userID, function(data){
+            // console.log("User Data:\n", data);
+            let userInfo = {}
+            let name = data[0].name;
+            let id = data[0].name;
+            userInfo.name = name;
+            userInfo.id = id;
+            users_id.push(userInfo);
+        });
+
+        user.gameList("users_id", userID, function(data){
+            for(let i=0; i < data.length; i++){
+                game.allBy("id", data[i].games_id, function(game){
+                   for(i = 0; i < game.length; i ++){
+
+                       let libraryGame = {
+                           name: game[i].name
+                       };
+                       userGames.push(libraryGame);
+                       console.log(userGames);
+
+                       if (userGames.length == data.length) {
+                            let hbsObject = {
+                                users_id : users_id,
+                                games: userGames
+                            }
+                        //render to profile handlebar
+                        // console.log("USER_ID for VIEWS:\n", users_id)                        
+                        // console.log("Handlebars O B J E C T: \n", hbsObject)                        
+                        response.render("user-library", hbsObject);
+                        }
+                   }
+                });
+            }
+        });
+
+    });
+});
+
 //Post game search
 //*****************************************NEEDS TO BE TESTED TO MAKE SURE CALLING CORRECTLY*************************/
 
 router.get("/gamesearch", function(request, response){
-response.render("gamesearch")
+    console.log(request);
+    response.render("gamesearch");
 })
 
 router.post("/gamesearch", function(request, response){
@@ -82,10 +169,10 @@ router.post("/gamesearch", function(request, response){
 })
 
 router.get("/gamesearch/:game", function(request, response){    
-    function gameBuilder(name, image) {
+    function gameBuilder(name, image, id) {
         this.name = name;
         this.image = image;
-        // this.id = id;
+        this.id = id;
     }
     let game = request.params.game;
     var gameResults = [];
@@ -126,6 +213,16 @@ router.get("/gamesearch/:game", function(request, response){
     });
 });
 
+router.post("/message/:id", function(request, response){
+    let id = request.params.id
+    user.allBy( "id", id, function(data) {
+        // console.log("Post Result:" , data);
+        let email = data[0].email;
+        mail.mailtouser(email)
+        response.render("search")
+    })    
+});
+
 // this route gets activated when the submit button gets clicked.
 // this submit button is found in form for creating a new user
 router.post("/create-user", function(request, response){
@@ -137,6 +234,32 @@ router.post("/create-user", function(request, response){
      function(data) {
         console.log(data);
     });
+});
+
+router.get("/create-game/:name/:id", function(request, response){
+    console.log(request.params.name);
+    console.log(request.params.id);
+
+    var gameTitle = request.params.name;
+    var gameId = request.params.id;
+    let userID = currentuserID.currentID;
+
+    game.allBy("id", gameId, function(data){
+        if (data.length < 1){
+        console.log("No matching games, Making creating that game to the database");
+        game.create(["id", "name"], [gameId, gameTitle], function(data){
+                console.log(data);
+            game.addtoUsers(["games_id", "users_id"], [gameId, userID], function(data){
+                console.log(data)
+            });
+            response.render("gamesearch");
+         });
+        } else {
+            console.log("Game is already in the database", data);
+            response.render("gamesearch");
+        }
+    });
+
 });
 
 // Export routes for server.js to use.

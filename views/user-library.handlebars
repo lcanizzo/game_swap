@@ -5,7 +5,7 @@
             <div class="row justify-content-between">
                 <div class="col profile-tabs">
                     <div class="card profile-links-card">
-                        {{#each users_id}}
+                       {{#each users_id}}
                         <form method="GET" action="/username/{{id}}">
                         <button class="card-link-div btn btn-warning">
                             Profile
@@ -21,26 +21,24 @@
                         </button>
                     </div>
                 </div>
+
                 <div class="col-8">
                     <div class="card profile-card">
-                        <h3 class="card-header">{{name}}</h3>
-                        <div class="card-body row">
-                            <div class="col">
-                                <h4 class="card-title">Info:</h4>
-                                <p class="card-text">Last active on: {{last_active}}</p>
-                                <form action="/message/{{id}}" method="POST">
-                                    <button class="btn btn-warning" type="submit">Send a trade request!</button>
-                                </form>
-                                <form method="GET" action="/gamesearch">
-                                    <button class="btn btn-warning" type="submit">Add a Game!</button>
-                                </form>
-                            </div>
-                            <div class="col">
-                                <img class="card-img-top" src="/assets/images/missingprofilepic.png{{image}}" alt="user image">                
-                            </div>
+                        <h3 class="card-header">{{name}}'s Games</h3>
+                        {{/each}}
+                        <div class="card-body container">
+                            {{#each games}}
+                                <div class="col games-cols">
+                                    <div class="card w-75 games-result-card">
+                                        <div class="card-body">
+                                            <h3 class="card-title">{{name}}</h3>
+                                            <img src={{image}}>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/each}}
                         </div>
                     </div>  
-                    {{/each}}
                 </div>
             </div>
         </div>

@@ -15,33 +15,38 @@ var PORT = process.env.PORT || 3000;
 
 
 // ========================================
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
     done(null, user);
-  });
-  
-  passport.deserializeUser(function(user, done) {
+});
+
+passport.deserializeUser(function (user, done) {
     done(null, user);
-  });
+});
 
 passport.use(new FacebookStrategy({
     clientID: 209804176226433,
     clientSecret: "c4f0e33d82134262ac76e68dcf875359",
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-      console.log("Looking for profile id: " + profile.id);
-      console.log("Profile: " + JSON.stringify(profile, null, 2));
-    user.findOne(profile.id, function(user){
-        if (!user){
-            console.log("No User Found");
-        }
-        else
-        {
-            console.log("Found User: ", user);
-            return done(null, user);
-        }
-    });
-  }
+    callbackURL: "https://sleepy-oasis-78182.herokuapp.com/auth/facebook/callback"
+},
+    function (accessToken, refreshToken, profile, done) {
+        console.log("Looking for profile: " + JSON.stringify(profile, null, 2));
+        user.findByFacebook(profile.id, function (data) {
+            console.log("Returned User", data);
+            if (data.length < 1) {
+                console.log("No User Found, Making New User");
+                var columns = [`name`, `facebook_id`];
+                var values = [profile.displayName, profile.id];
+                console.log;
+                user.create(columns, values, function (data) {
+                    return done(null, data);
+                });
+            }
+            else {
+                console.log("Found User: ", data);
+                return done(null, data);
+            }
+        });
+    }
 ));
 
 
@@ -67,6 +72,6 @@ app.use("/", authRoutes);
 
 // Listen
 // ======================================
-app.listen(PORT, function(){
+app.listen(PORT, function () {
     console.log("Listening on Port: " + PORT)
 });

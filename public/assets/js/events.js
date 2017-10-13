@@ -1,6 +1,13 @@
-$( document ).ready(function() {
+var mail = require("../config/mail.js")
+var nodemailer = require("nodemailer")
+
+$(document).ready(function() {
     
-    console.log( "JS Linked" );
+    // $("#mailButton").on("click", function (){
+    //     mail.mailtouser()
+    //     })
+    
+    //console.log( "JS Linked" );
 
     // $('#search-btn').on("click", function (e) {
     //     console.log("Searching");

@@ -61,6 +61,7 @@ nav {
 }
 
 .card-link-div{
+    width: 100%;
     color: floralwhite;
     text-align: center;
     min-height: 30%;
@@ -78,6 +79,10 @@ nav {
     margin-left: 13%;
     margin-right: 5%;
     box-shadow: 0px 3px 10px 0px #0c5460;
+}
+
+#addGame {
+    margin-top: 5%;
 }
 
 .games-cols {
