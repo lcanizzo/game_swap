@@ -13,7 +13,6 @@ VALUES ("Full Sail University", "Orlando", "FL", 32792);
 INSERT INTO `gameswap_db`.`locations` (`name`,`city`,`state`,`zip`) 
 VALUES ("Rollins College", "Orlando", "FL", 32789);
 
-<<<<<<< HEAD
 
 INSERT INTO `gameswap_db`. `users`(`name`, `email`, `is_verified`, `locations_id`,`last_active`, `password`, `facebook_id`, `image`)
 VALUES  
@@ -36,19 +35,3 @@ VALUES
         ("Jacob", "bobexample@hotmail.com", 0, 3,'2017-04-04', "password", 1015576290025812, "/assets/images/missingprofilepic.png"),
         ("Rob", "test@gmail.com", 0, 1,'2017-04-04', "password", 10155762900027812, "/assets/images/missingprofilepic.png");
         
-=======
--- U S E R S
-DELETE FROM `gameswap_db`. `users`; 
-
-INSERT INTO `gameswap_db`. `users`(`name`, `email`, `is_verified`, `locations_id`,`last_active`, `password`, `facebook_id`)
-VALUES  
-        ("Luca Canizzo", "luca.canizzo@gmail.com", 0, 1,'1999-04-04', "password", 1617611878303022),
-        ("Wybo", "andrewwybo@gmail.com", 0, 1,'1999-04-04', "password", 10155762906027812),
-        ("Francisco", "franciscocarrer@gmail.com", 0, 2,'1999-04-04', "password", 10101639790623289);
-        -- ("Bryan", "bryanporras2033@gmail.com", 1, 1,'1999-04-04', "password"),
-        -- ("John", "johnexample@hotmail.com", 1, 1,'1999-04-04', "password"),
-        -- ("Emily", "emilyexample@hotmail.com", 0, 1,'1999-04-04', "password"),
-        -- ("Bob", "bobexample@hotmail.com", 0, 3,'1999-04-04', "password"),
-        -- ("Bryan", "test@gmail.com", 0, 1,'1999-04-04', "password"), 
-        
->>>>>>> f6e5b27a6b6aa5d5635fa1cbdc377cd1a57287fe
