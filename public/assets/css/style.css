@@ -64,7 +64,7 @@ nav {
     width: 100%;
     color: floralwhite;
     text-align: center;
-    min-height: 30%;
+    /* min-height: 30%; */
     font-size: 40pt;
     border-radius: .25rem;
     background-color: rgb(241, 192, 37);
