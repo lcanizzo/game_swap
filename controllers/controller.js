@@ -124,7 +124,8 @@ router.get("/library/:id?", function(request, response){
                    for(i = 0; i < game.length; i ++){
 
                        let libraryGame = {
-                           name: game[i].name
+                           name: game[i].name,
+                           image: game[i].image
                        };
                        userGames.push(libraryGame);
                        console.log(userGames);
@@ -237,17 +238,18 @@ router.post("/create-user", function(request, response){
 });
 
 router.get("/create-game/:name/:id", function(request, response){
-    console.log(request.params.name);
-    console.log(request.params.id);
-
-    var gameTitle = request.params.name;
-    var gameId = request.params.id;
+    // console.log(request.params.name);
+    // console.log(request.params.id);
+    // console.log("A D D    G A M E   R E Q U E S T\n", request.query.imageTag);  
+    let gameTitle = request.params.name;
+    let gameId = request.params.id;
     let userID = currentuserID.currentID;
+    let gameImage = request.query.imageTag;
 
     game.allBy("id", gameId, function(data){
         if (data.length < 1){
-        console.log("No matching games, Making creating that game to the database");
-        game.create(["id", "name"], [gameId, gameTitle], function(data){
+        console.log("No matching games, creating that game to the database");
+        game.create(["id", "name", "image"], [gameId, gameTitle, gameImage], function(data){
                 console.log(data);
             game.addtoUsers(["games_id", "users_id"], [gameId, userID], function(data){
                 console.log(data)
