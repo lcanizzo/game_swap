@@ -95,3 +95,19 @@ nav {
 #game-results {
     padding-left: 15%;
 }
+
+
+/* U S E R   L I B R A R Y */
+.lib-games-cols {
+    min-width: 45%;
+    max-width: 80%;
+    padding: 0;
+}
+
+.lib-box {
+    padding-left: 20%;
+}
+
+.games-result-card{
+    margin-top: 10px;
+}
