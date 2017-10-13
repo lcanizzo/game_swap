@@ -63,6 +63,7 @@ CREATE TABLE IF NOT EXISTS `gameswap_db`.`users` (
   `is_verified` BOOLEAN DEFAULT false,
   `last_active` DATE,
   `password` VARCHAR(35),
+  `image` VARCHAR(255) DEFAULT "/assets/images/missingprofilepic.png",
   `users_meta_id` INT NULL,
   `locations_id` INT,
   PRIMARY KEY (`id`),
@@ -88,6 +89,7 @@ CREATE TABLE IF NOT EXISTS `gameswap_db`.`games` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `genre` VARCHAR(45),
+  `image` VARCHAR(255) DEFAULT "//publications.iarc.fr/uploads/media/default/0001/02/thumb_1199_default_publication.jpeg",
   `year` YEAR NULL,
   `platform` VARCHAR(30),
   PRIMARY KEY (`id`))
