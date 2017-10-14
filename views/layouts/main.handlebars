@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2000px-Full_Star_Yellow.svg.png" />
     
     {{!-- Libraries --}}
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
@@ -17,32 +18,50 @@
     {{!-- Scripts --}}
     <script src="assets/js/events.js"></script>
 
-    <title>Game Swap - Search</title>
+    <title>Game Swap</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <form action="/search" method="GET">
-            <a class="navbar-brand" href="/search"><img class="card-img-top" src="/assets/images/gameswaplogo_crop_resize.png" alt="brand image"></a>
-        </form>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <form action="/search" method="GET"></form>
-                    <a class="nav-item nav-link active" href="/search">User Search
-                    <span class="sr-only">(current)</span>
-                    </a>
-                </form>
-                <form action="/username" method="GET">
-                    <a class="nav-item nav-link" href="/username">My Profile</a>
-                </form>
+
+    <div class="wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <form action="/search" method="GET">
+                <a class="navbar-brand" href="/search"><img class="card-img-top" src="/assets/images/gameswaplogo_crop_resize.png" alt="brand image"></a>
+            </form>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <form action="/search" method="GET"></form>
+                        <a class="nav-item nav-link active" href="/search">User Search
+                        <span class="sr-only">(current)</span>
+                        </a>
+                    </form>
+                    <form action="/username" method="GET">
+                        <a class="nav-item nav-link" href="/username">My Profile</a>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        
+        {{{body}}}
+
+        <div class="push"></div>
+
+        <!-- F I X E D   F O O T E R -->
+        <div class="navbar navbar-default fixed-footer">
+            <div class="container center-footer">
+                <p class="navbar-text footer-content">Copyright:
+                    <a class="footer-content" href="https://github.com/Wyb0" target="_blank">A.W</a>
+                    <a class="footer-content" href="https://github.com/Bryanp2033" target="_blank">B.P</a>
+                    <a class="footer-content" href="https://github.com/MaddJhin" target="_blank">F.C</a>
+                    <a class="footer-content" href="https://github.com/lcanizzo" target="_blank">L.C</a> &copy; 2017
+                </p>
             </div>
         </div>
-    </nav>
-    {{{body}}}
+    </div>
 </body>
 
 </html>
