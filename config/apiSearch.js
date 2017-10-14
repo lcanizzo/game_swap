@@ -2,7 +2,7 @@
 const igdb = require('igdb-api-node').default;
 
 //set api key to variable 
-const client = igdb('be1ea7dccb14bcf3ae57b1e16d62cb74');
+const client = igdb('f623d5dcfa8a8be3dd547c23358736e4');
 
 //variable for game string
 //********************************* HARD CODED TITLE, NEEDS TO BE REPLACED WITH USER INPUT********************************** */
@@ -28,7 +28,10 @@ var apiSearch = {
         }).then(function (response) {
             // gameResults=[];
             cb(response);
-        });
+        }).catch(function (err) {
+            console.log("ERROR:\n", err);
+            console.log("Promise Rejected");
+       });
     }
 }
 

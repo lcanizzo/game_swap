@@ -6,6 +6,10 @@ nav {
     box-shadow: 0px 3px 10px 0px #0c5460;
 }
 
+.views-box {
+    margin-bottom: 90px;    
+}
+
 .search-box{
     background-color: #f8f9fa;
     box-shadow: 0px 3px 10px 0px #0c5460;
@@ -110,4 +114,41 @@ nav {
 
 .games-result-card{
     margin-top: 10px;
+}
+
+/* F O O T E R  */
+html, body{
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -90px;
+}
+
+.push {
+    margin-bottom: 90px;
+    clear: both;
+    height: 90px;
+}
+
+.footer-content {
+    width: 100%;
+    color: #444;
+    font-family:'Open Sans', sans-serif;
+    font-size: 14px;
+    text-align: center;
+    margin: 0 auto;
+} 
+
+.fixed-footer {
+    height: 90px;
+    margin: 20px 20% 0 20%;
+    align-items: start;
+}
+
+.center-footer {
+    margin: 0 auto;
+    width: 50%;
 }
