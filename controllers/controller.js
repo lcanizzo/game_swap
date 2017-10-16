@@ -148,6 +148,58 @@ router.get("/library/:id?", function(request, response){
     });
 });
 
+// User Wish List
+router.get("/wishlist/:id?", function(request, response){
+    //render to library handlebar
+    // let userID = currentuserID.currentID;
+    console.log("You are in the wish list page")
+
+    user.allBy("id", request.params.id, function(data){
+
+        let userID= request.params.id;
+        let userGames =[];
+        let users_id = [];
+        // set up users_id object
+        user.allBy("id", userID, function(data){
+            // console.log("User Data:\n", data);
+            let userInfo = {}
+            let name = data[0].name;
+            let id = data[0].id;
+            userInfo.name = name;
+            userInfo.id = id;
+            users_id.push(userInfo);
+        });
+
+        user.wishList("users_id", "wishlist", [userID, 1], function(data){
+            for(let i=0; i < data.length; i++){
+                game.allBy("id", data[i].games_id, function(game){
+                   for(i = 0; i < game.length; i ++){
+
+                       let libraryGame = {
+                           name: game[i].name,
+                           image: game[i].image
+                       };
+                       userGames.push(libraryGame);
+                       console.log(userGames);
+
+                       if (userGames.length == data.length) {
+                            let hbsObject = {
+                                users_id : users_id,
+                                games: userGames
+                            }
+                        //render to profile handlebar
+                        // console.log("USER_ID for VIEWS:\n", users_id)                        
+                        // console.log("Handlebars O B J E C T: \n", hbsObject)                        
+                        response.render("user-wishlist", hbsObject);
+                        }
+                   }
+                });
+            }
+        });
+
+    });
+});
+
 //Post game search
 //*****************************************NEEDS TO BE TESTED TO MAKE SURE CALLING CORRECTLY*************************/
 
