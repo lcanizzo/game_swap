@@ -1,0 +1,48 @@
+<div class="container justify-content-center">
+
+    <div class="content-box jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col profile-tabs">
+                    <div class="card profile-links-card">
+                       {{#each users_id}}
+                        <form method="GET" action="/username/{{id}}">
+                            <button class="card-link-div btn btn-warning">
+                                Profile
+                            </button>
+                        </form>
+                        <form method="GET" action="/library/{{id}}">
+                            <button class="card-link-div btn btn-warning">
+                                Library
+                            </button>
+                        </form>
+                        <form method="GET" action="/wishlist/{{id}}">
+                            <button class="card-link-div btn btn-warning">
+                                Wish List
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-8">
+                    <div class="card profile-card">
+                        <h3 class="card-header">{{name}}'s Wish List</h3>
+                        {{/each}}
+                        <div class="card-body container lib-box">
+                            {{#each games}}
+                                <div class="row lib-games-cols">
+                                    <div class="card w-75 games-result-card">
+                                        <div class="card-body">
+                                            <h3 class="card-title">{{name}}</h3>
+                                            <img src="{{image}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
