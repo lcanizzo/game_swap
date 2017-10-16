@@ -23,12 +23,13 @@
                             <div class="card-body">
                                 <h3 class="card-title" name="name">{{name}}</h3>
                                 <img name="game-image" src={{image}}>
-                                <input type="hidden" name="imageTag" value={{image}}>
                                 <form method="get" action="/create-game/{{name}}/{{id}}">
                                     <button type="submit" class="btn btn-warning" id="addGame">Add to Library</button>
+                                    <input type="hidden" name="imageTag" value={{image}}>
                                 </form>
                                 <form method="get" action="/create-wishlist/{{name}}/{{id}}">
                                     <button type="submit" class="btn btn-warning" id="addWishList">Add to Wish List</button>
+                                    <input type="hidden" name="imageTag" value={{image}}>
                                 </form>
                             </div>
                         </div>
