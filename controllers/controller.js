@@ -118,7 +118,7 @@ router.get("/library/:id?", function(request, response){
             users_id.push(userInfo);
         });
 
-        user.gameList("users_id", userID, function(data){
+        user.gameList("users_id", "wishlist", [userID, 0], function(data){
             for(let i=0; i < data.length; i++){
                 game.allBy("id", data[i].games_id, function(game){
                    for(i = 0; i < game.length; i ++){
@@ -170,7 +170,7 @@ router.get("/wishlist/:id?", function(request, response){
             users_id.push(userInfo);
         });
 
-        user.wishList("users_id", "wishlist", [userID, 1], function(data){
+        user.gameList("users_id", "wishlist", [userID, 1], function(data){
             for(let i=0; i < data.length; i++){
                 game.allBy("id", data[i].games_id, function(game){
                    for(i = 0; i < game.length; i ++){
