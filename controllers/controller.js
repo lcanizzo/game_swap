@@ -122,7 +122,7 @@ router.get("/library/:id?", function(request, response){
             for(let i=0; i < data.length; i++){
                 game.allBy("id", data[i].games_id, function(game){
                    for(i = 0; i < game.length; i ++){
-
+                       console.log('Library Games:\n', game);                    
                        let libraryGame = {
                            name: game[i].name,
                            image: game[i].image
@@ -174,15 +174,15 @@ router.get("/wishlist/:id?", function(request, response){
             for(let i=0; i < data.length; i++){
                 game.allBy("id", data[i].games_id, function(game){
                    for(i = 0; i < game.length; i ++){
+                        console.log('Wish List Games:\n', game);
+                        let libraryGame = {
+                            name: game[i].name,
+                            image: game[i].image
+                        };
+                        userGames.push(libraryGame);
+                        console.log(userGames);
 
-                       let libraryGame = {
-                           name: game[i].name,
-                           image: game[i].image
-                       };
-                       userGames.push(libraryGame);
-                       console.log(userGames);
-
-                       if (userGames.length == data.length) {
+                        if (userGames.length == data.length) {
                             let hbsObject = {
                                 users_id : users_id,
                                 games: userGames
