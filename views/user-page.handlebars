@@ -7,18 +7,20 @@
                     <div class="card profile-links-card">
                         {{#each users_id}}
                         <form method="GET" action="/username/{{id}}">
-                        <button class="card-link-div btn btn-warning">
-                            Profile
-                        </button>
+                            <button class="card-link-div btn btn-warning">
+                                Profile
+                            </button>
                         </form>
                         <form method="GET" action="/library/{{id}}">
-                        <button class="card-link-div btn btn-warning">
-                            Library
-                        </button>
+                            <button class="card-link-div btn btn-warning">
+                                Library
+                            </button>
                         </form>
-                        <button class="card-link-div btn btn-warning">
-                            Wish List
-                        </button>
+                        <form method="GET" action="/wishlist/{{id}}">
+                            <button class="card-link-div btn btn-warning">
+                                Wish List
+                            </button>
+                        </form>
                     </div>
                 </div>
                 <div class="col-8">

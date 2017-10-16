@@ -148,6 +148,58 @@ router.get("/library/:id?", function(request, response){
     });
 });
 
+// User Wish List
+router.get("/wishlist/:id?", function(request, response){
+    //render to library handlebar
+    // let userID = currentuserID.currentID;
+    console.log("You are in the wish list page")
+
+    user.allBy("id", request.params.id, function(data){
+
+        let userID= request.params.id;
+        let userGames =[];
+        let users_id = [];
+        // set up users_id object
+        user.allBy("id", userID, function(data){
+            // console.log("User Data:\n", data);
+            let userInfo = {}
+            let name = data[0].name;
+            let id = data[0].id;
+            userInfo.name = name;
+            userInfo.id = id;
+            users_id.push(userInfo);
+        });
+
+        user.wishList("users_id", "wishlist", [userID, 1], function(data){
+            for(let i=0; i < data.length; i++){
+                game.allBy("id", data[i].games_id, function(game){
+                   for(i = 0; i < game.length; i ++){
+
+                       let libraryGame = {
+                           name: game[i].name,
+                           image: game[i].image
+                       };
+                       userGames.push(libraryGame);
+                       console.log(userGames);
+
+                       if (userGames.length == data.length) {
+                            let hbsObject = {
+                                users_id : users_id,
+                                games: userGames
+                            }
+                        //render to profile handlebar
+                        // console.log("USER_ID for VIEWS:\n", users_id)                        
+                        // console.log("Handlebars O B J E C T: \n", hbsObject)                        
+                        response.render("user-wishlist", hbsObject);
+                        }
+                   }
+                });
+            }
+        });
+
+    });
+});
+
 //Post game search
 //*****************************************NEEDS TO BE TESTED TO MAKE SURE CALLING CORRECTLY*************************/
 
@@ -250,19 +302,49 @@ router.get("/create-game/:name/:id", function(request, response){
         if (data.length < 1){
         console.log("No matching games, creating that game to the database");
         game.create(["id", "name", "image"], [gameId, gameTitle, gameImage], function(data){
-                console.log(data);
+                console.log('Game Created:\n', data);
             game.addtoUsers(["games_id", "users_id"], [gameId, userID], function(data){
-                console.log(data)
+                console.log("Game added to user Lib:\n",data)
             });
             response.render("gamesearch");
          });
         } else {
             console.log("Game is already in the database", data);
+            game.addtoUsers(["games_id", "users_id"], [gameId, userID], function(data){
+                console.log("Game added to user Lib:\n",data)
+            });
             response.render("gamesearch");
         }
     });
-
 });
 
+router.get("/create-wishlist/:name/:id", function(request, response){
+    // console.log(request.params.name);
+    // console.log(request.params.id);
+    // console.log("A D D    G A M E   R E Q U E S T\n", request.query.imageTag);  
+    let gameTitle = request.params.name;
+    let gameId = request.params.id;
+    let userID = currentuserID.currentID;
+    let gameImage = request.query.imageTag;
+
+    game.allBy("id", gameId, function(data){
+        if (data.length < 1){
+        console.log("No matching games, creating that game to the database");
+        game.create(["id", "name", "image"], [gameId, gameTitle, gameImage], function(data){
+                console.log('Game Created:\n', data);
+            game.addtoUsers(["games_id", "users_id", "wishlist"], [gameId, userID, 1], function(data){
+                console.log("Game added to user WL:\n", data)
+            });
+            response.render("gamesearch");
+         });
+        } else {
+            console.log("Game is already in the database", data);
+            game.addtoUsers(["games_id", "users_id", "wishlist"], [gameId, userID, 1], function(data){
+                console.log("Game added to user WL:\n", data)
+            });
+            response.render("gamesearch");
+        }
+    });
+});
 // Export routes for server.js to use.
 module.exports = router;

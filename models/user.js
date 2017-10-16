@@ -26,10 +26,15 @@ var user = {
         });
     },
     gameList: function(cond, vals, cb){
-        orm.allBy("gamesToUsers", cond, vals, function(res){
+        orm.allBy("gamesToUsers", cond, vals, function(res, err){
             cb(res);
         })
-    }
+    },
+    wishList: function(cond, cond2, vals, cb){
+        orm.allBy2("gamesToUsers", cond, cond2, vals, function(res, err){
+            cb(res);
+        })
+    },
 };
 
 module.exports = user;

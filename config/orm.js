@@ -70,6 +70,24 @@ var orm ={
             cb(result);
         });
     },
+    /** Search based on 2 conditions
+    * @param {string} table - Target table of the new entry.
+    * @param {string} cond - Column Name of condition where results are looked for.
+    * @param {any} val - Value of the condition being searched for
+    * @param {function} cb - Callback Function
+    */
+    allBy2: function (table, cond, cond2, val, cb) {
+        var condition = cond;
+        var condition2 = cond2;        
+        var queryString = "SELECT * FROM " + table + " WHERE " + condition + " = ? AND " + condition2 + " = ?;";
+
+        console.log("ORM Searching for: " + queryString);
+ 
+        connection.query(queryString, val, function (err, result) {
+            console.log("ORM Result", result);
+            cb(result);
+        });
+    },
 }
 // Object for all our SQL statement functions. 
 
