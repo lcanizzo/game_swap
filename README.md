@@ -20,9 +20,13 @@ Upon opening our application you will be prompted to log in with Facebook. This 
 
 # Profile and Adding Games to Library
 
-You can guide to your own profile and start expanding your game library as soon as logging in. Clicking "My Profile" in the top right of the page will guide you to your own profile page. You are able to see a profile picture of yourself as well as the ability to add games! Clicking the "Add a Game" button, will direct you to a search to look for games to add to your library. We are searching for the game "Doom 3" below. Clicking the "Add Game to Library" will redirect you back to the User Search page and add the game to your own library for others to view.
+You can guide to your own profile and start expanding your game library as soon as logging in. Clicking "My Profile" in the top right of the page will guide you to your own profile page. You are able to see a profile picture of yourself as well as the ability to add games! Clicking the "Add a Game" button, will direct you to a search to look for games to add to your library. We are searching for the game "Doom 3" below. Clicking the "Add to Library" will redirect you back to the User Search page and add the game to your own library for others to view.
 
 ![Game Swap: Profile and Adding Games to Library](/gifs/profile_addgame.gif "Profile and Adding Games to Library")
+
+Selecting "Add to Wish List" will also redirect you back to the User Search page, while adding the game you selected to your own Wish List for others to view.
+
+![Game Swap: Profile and Adding Games to Wish List](/gifs/gameswap_wishlist.gif "Profile and Adding Games to Wish List")
 
 # Trading and Emails
 
