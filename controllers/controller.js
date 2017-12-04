@@ -41,7 +41,6 @@ router.get("/search", function(request, response){
 router.post("/search", function(request, response){
     var locationID = request.body.location;
     //let userID = currentuserID.currentID;
-
     response.redirect("/search/"+locationID);
 });
 
@@ -49,7 +48,6 @@ router.get("/search/:locationID", function(request, response){
     var locationID = request.params.locationID;
     
     user.allBy( "locations_id", locationID, function(data) {
-        // console.log("Post Result:" , data);
         var hbsObject = {
             users: data
         };
@@ -144,7 +142,6 @@ router.get("/library/:id?", function(request, response){
                 });
             }
         });
-
     });
 });
 
@@ -155,7 +152,6 @@ router.get("/wishlist/:id?", function(request, response){
     console.log("You are in the wish list page")
 
     user.allBy("id", request.params.id, function(data){
-
         let userID= request.params.id;
         let userGames =[];
         let users_id = [];
@@ -196,13 +192,12 @@ router.get("/wishlist/:id?", function(request, response){
                 });
             }
         });
-
     });
 });
 
 //Post game search
 //*****************************************NEEDS TO BE TESTED TO MAKE SURE CALLING CORRECTLY*************************/
-
+//Remove Excess logs and modularize controller//
 router.get("/gamesearch", function(request, response){
     console.log(request);
     response.render("gamesearch");
@@ -214,7 +209,6 @@ router.post("/gamesearch", function(request, response){
     // gameSearch.search(string, function (data) {
     //     console.log (data);
     // });
-    
     let game = request.body.game
     console.log('game string:\,', game);
     response.redirect("/gamesearch/"+game)
@@ -229,7 +223,6 @@ router.get("/gamesearch/:game", function(request, response){
     }
     let game = request.params.game;
     var gameResults = [];
-    
     //console.log(game)
     gameSearch.search(game, function (data) {
         gameResults=[];
@@ -297,7 +290,6 @@ router.get("/create-game/:name/:id", function(request, response){
     let gameId = request.params.id;
     let userID = currentuserID.currentID;
     let gameImage = request.query.imageTag;
-
     game.allBy("id", gameId, function(data){
         if (data.length < 1){
         console.log("No matching games, creating that game to the database");
